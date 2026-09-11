@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Личная коллекция фильмов, сериалов и книг.">
+  <title>Моя коллекция — фильмы, сериалы и книги</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="page-header" hidden>
+      <h1 id="page-title">Моя коллекция</h1>
+    </header>
+    <nav class="media-nav" aria-label="Тип произведения" id="type-filters">
+      <button class="nav-item active" data-type="all" aria-pressed="true">Все<span class="count" id="count-all">0</span></button>
+      <button class="nav-item" data-type="movie" aria-pressed="false">Фильмы<span class="count" id="count-movie">0</span></button>
+      <button class="nav-item" data-type="series" aria-pressed="false">Сериалы<span class="count" id="count-series">0</span></button>
+      <button class="nav-item" data-type="book" aria-pressed="false">Книги<span class="count" id="count-book">0</span></button>
+    </nav>
+    <section class="stats" aria-label="Статистика коллекции">
+      <div><span class="stat-number" id="stat-total">0</span><span class="stat-label">в коллекции</span></div>
+      <div><span class="stat-number" id="stat-finished">0</span><span class="stat-label" id="stat-finished-label">просмотрено и прочитано</span></div>
+      <div><span class="stat-number accent" id="stat-waiting">0</span><span class="stat-label">в ожидании</span></div>
+    </section>
+
+    <section class="catalog" aria-label="Каталог">
+      <div class="catalog-toolbar">
+        <div class="status-filters" id="status-filters" role="group" aria-label="Статус">
+          <button class="selected" data-status="all" aria-pressed="true">Все</button>
+          <button data-status="waiting" aria-pressed="false">В ожидании</button>
+          <button data-status="watched" aria-pressed="false">Просмотрено</button>
+          <button data-status="read" aria-pressed="false">Прочитано</button>
+        </div>
+        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Поиск по названию" aria-label="Поиск по русскому или оригинальному названию"></label>
+      </div>
+      <div class="results-meta"><span id="result-count" role="status" aria-live="polite">Загружаем коллекцию…</span><span>Сначала новые</span></div>
+      <div class="table-wrap" id="table-wrap" hidden>
+        <table><thead><tr><th scope="col">Название</th><th scope="col">Год</th><th scope="col">Статус</th><th scope="col">Добавлено</th></tr></thead><tbody id="entries"></tbody></table>
+      </div>
+      <div class="empty-state" id="empty-state" hidden>
+        <h2 id="empty-title">Коллекция пока пуста</h2>
+        <p id="empty-description">Добавьте фильм, сериал или книгу через CLI.</p>
+        <code id="empty-command">python3 shelf.py add movie --help</code>
+        <button class="text-button" id="reset-filters" hidden>Сбросить фильтры</button>
+      </div>
+      <div class="empty-state" id="error-state" role="alert" hidden><h2>Не удалось загрузить коллекцию</h2><p>Проверьте доступность и формат JSON-каталогов. Для локального просмотра запустите сайт через HTTP-сервер.</p><button class="retry-button" id="retry">Попробовать снова</button></div>
+    </section>
+  </main>
+</body>
+</html>
