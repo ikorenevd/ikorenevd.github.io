@@ -6,5 +6,37 @@
     "year": 1997,
     "status": "watched",
     "added_at": "2026-09-11T21:10:32.311937+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "Видеодром",
+    "title_original": "Videodrome",
+    "year": 1983,
+    "status": "waiting",
+    "added_at": "2026-09-11T21:59:05.177408+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "Крепкий орешек",
+    "title_original": "Die Hard",
+    "year": 1988,
+    "status": "watched",
+    "added_at": "2026-09-11T22:00:31.832538+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "Крепкий орешек 2",
+    "title_original": "Die Hard 2",
+    "year": 1990,
+    "status": "watched",
+    "added_at": "2026-09-11T22:01:05.936203+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "Крепкий орешек 3. Возмездие",
+    "title_original": "Die Hard with a Vengeance",
+    "year": 1995,
+    "status": "watched",
+    "added_at": "2026-09-11T22:02:19.892573+03:00"
   }
 ]
