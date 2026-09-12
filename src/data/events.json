@@ -152,5 +152,15 @@
     "recurrence": null,
     "id": "74f46dd3-4a5f-4ef1-8a7d-b10f31f76f50",
     "created_at": "2026-09-12T17:19:44+03:00"
+  },
+  {
+    "title": "Стрижка",
+    "start": "2026-09-13T13:00:00.000Z",
+    "end": "2026-09-13T14:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "cf57d952-70d2-4743-ab63-db7321a77b7f",
+    "created_at": "2026-09-12T18:50:34+03:00"
   }
 ]
