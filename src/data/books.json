@@ -53,5 +53,104 @@
     "completed_at": "2026-09-12T04:00:33.152289+03:00",
     "author_ru": "Ева Меркачева",
     "author_original": "Ева Меркачева"
+  },
+  {
+    "type": "book",
+    "title_ru": "Защита Лужина",
+    "title_original": "Защита Лужина",
+    "year": 1929,
+    "status": "read",
+    "added_at": "2026-09-12T04:09:14.120797+03:00",
+    "completed_at": "2026-09-12T04:09:14.120797+03:00",
+    "author_ru": "Владимир Набоков",
+    "author_original": "Владимир Набоков"
+  },
+  {
+    "type": "book",
+    "title_ru": "Машенька",
+    "title_original": "Машенька",
+    "year": 1926,
+    "status": "waiting",
+    "added_at": "2026-09-12T04:10:51.982174+03:00",
+    "completed_at": null,
+    "author_ru": "Владимир Набоков",
+    "author_original": "Владимир Набоков"
+  },
+  {
+    "type": "book",
+    "title_ru": "Дар",
+    "title_original": "Дар",
+    "year": 1938,
+    "status": "waiting",
+    "added_at": "2026-09-12T04:11:22.886025+03:00",
+    "completed_at": null,
+    "author_ru": "Владимир Набоков",
+    "author_original": "Владимир Набоков"
+  },
+  {
+    "type": "book",
+    "title_ru": "Тепло твоих рук",
+    "title_original": "Тепло твоих рук",
+    "year": 1,
+    "status": "read",
+    "added_at": "2026-09-12T04:12:58.504605+03:00",
+    "completed_at": "2026-09-12T04:12:58.504605+03:00",
+    "author_ru": "Илья Масодов",
+    "author_original": "Илья Масодов"
+  },
+  {
+    "type": "book",
+    "title_ru": "Мрак твоих глаз",
+    "title_original": "Мрак твоих глаз",
+    "year": 1,
+    "status": "read",
+    "added_at": "2026-09-12T04:13:27.974466+03:00",
+    "completed_at": "2026-09-12T04:13:27.974466+03:00",
+    "author_ru": "Илья Масодов",
+    "author_original": "Илья Масодов"
+  },
+  {
+    "type": "book",
+    "title_ru": "Русские заветные сказки",
+    "title_original": "Русские заветные сказки",
+    "year": 1876,
+    "status": "read",
+    "added_at": "2026-09-12T04:14:54.211912+03:00",
+    "completed_at": "2026-09-12T04:14:54.211912+03:00",
+    "author_ru": "Афанасьев",
+    "author_original": "Афанасьев"
+  },
+  {
+    "type": "book",
+    "title_ru": "Москва-Петушки",
+    "title_original": "Москва-Петушки",
+    "year": 1969,
+    "status": "waiting",
+    "added_at": "2026-09-12T04:16:10.628741+03:00",
+    "completed_at": null,
+    "author_ru": "Венедикт Ерофеев",
+    "author_original": "Венедикт Ерофеев"
+  },
+  {
+    "type": "book",
+    "title_ru": "Шатуны",
+    "title_original": "Шатуны",
+    "year": 1966,
+    "status": "read",
+    "added_at": "2026-09-12T04:17:24.700325+03:00",
+    "completed_at": "2026-09-12T04:17:24.700325+03:00",
+    "author_ru": "Юрий Мамлеев",
+    "author_original": "Юрий Мамлеев"
+  },
+  {
+    "type": "book",
+    "title_ru": "Марш одиноких",
+    "title_original": "Марш одиноких",
+    "year": 1983,
+    "status": "read",
+    "added_at": "2026-09-12T04:19:16.886854+03:00",
+    "completed_at": "2026-09-12T04:19:16.886854+03:00",
+    "author_ru": "Сергей Довлатов",
+    "author_original": "Сергей Довлатов"
   }
 ]
