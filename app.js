@@ -6,19 +6,34 @@ const statusLabels = { waiting: "В ожидании", watched: "Просмот�
 const state = { records: [], type: "all", status: "all", query: "" };
 const byId = (id) => document.getElementById(id);
 const dateFormat = new Intl.DateTimeFormat("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric" });
+const displayTitle = (record) => record.title_ru.trim() || record.title_original.trim();
+const bookAuthors = (record) => [...new Set([record.author_ru, record.author_original].map((name) => name.trim()).filter(Boolean))];
 
 function validateCatalog(records, types) {
   if (!Array.isArray(records)) throw new Error("Каталог должен быть массивом");
   for (const record of records) {
     if (!record || !types.includes(record.type)
-      || ![record.title_ru, record.title_original].every((value) => typeof value === "string" && value.trim())
+      || ![record.title_ru, record.title_original].every((value) => typeof value === "string")
+      || !(record.title_ru.trim() || record.title_original.trim())
+      || (record.type === "book" && [record.author_ru, record.author_original, record.author]
+        .some((value) => value !== undefined && typeof value !== "string"))
       || !Number.isInteger(record.year) || record.year < 1 || record.year > 9999
       || !["waiting", record.type === "book" ? "read" : "watched"].includes(record.status)
-      || typeof record.added_at !== "string" || !Number.isFinite(Date.parse(record.added_at))) {
+      || typeof record.added_at !== "string" || !Number.isFinite(Date.parse(record.added_at))
+      || (record.completed_at !== undefined && record.completed_at !== null
+        && (typeof record.completed_at !== "string" || !Number.isFinite(Date.parse(record.completed_at))))
+      || (record.status !== "waiting" && record.completed_at === null)) {
       throw new Error("Некорректная запись каталога");
     }
   }
-  return records;
+  return records.map((record) => ({
+    ...record,
+    ...(record.type === "book" ? {
+      author_ru: record.author_ru ?? record.author ?? "",
+      author_original: record.author_original ?? "",
+    } : {}),
+    completed_at: record.status === "waiting" ? null : record.completed_at ?? record.added_at,
+  }));
 }
 
 function element(tag, className, text) {
@@ -26,6 +41,21 @@ function element(tag, className, text) {
   node.className = className;
   node.textContent = text;
   return node;
+}
+
+function dateCell(value, label) {
+  const cell = element("td", "entry-date", "");
+  const caption = element("span", "date-label", `${label}:`);
+  caption.setAttribute("aria-hidden", "true");
+  cell.append(caption);
+  if (value) {
+    const time = element("time", "", dateFormat.format(new Date(value)));
+    time.dateTime = value;
+    cell.append(time);
+  } else {
+    cell.append(element("span", "", "—"));
+  }
+  return cell;
 }
 
 function render() {
@@ -41,6 +71,13 @@ function render() {
     ? "просмотрено и прочитано"
     : state.type === "book" ? "прочитано" : "просмотрено";
   byId("page-title").textContent = headings[state.type];
+  byId("completed-heading").textContent = state.type === "all" ? "Дата завершения"
+    : state.type === "book" ? "Дата прочтения" : "Дата просмотра";
+  const searchAuthors = state.type === "all" || state.type === "book";
+  byId("search").placeholder = searchAuthors ? "Название или автор" : "Поиск по названию";
+  byId("search").setAttribute("aria-label", searchAuthors
+    ? "Поиск по русскому или оригинальному названию и имени автора книги"
+    : "Поиск по русскому или оригинальному названию");
   document.querySelectorAll("[data-type]").forEach((button) => {
     const active = button.dataset.type === state.type;
     button.classList.toggle("active", active);
@@ -55,20 +92,26 @@ function render() {
   });
   const query = state.query.trim().toLocaleLowerCase("ru");
   const visible = selectedRecords.filter((record) => (state.status === "all" || record.status === state.status)
-    && `${record.title_ru} ${record.title_original}`.toLocaleLowerCase("ru").includes(query))
-    .sort((a, b) => Date.parse(b.added_at) - Date.parse(a.added_at) || a.title_ru.localeCompare(b.title_ru, "ru"));
+    && `${record.title_ru} ${record.title_original} ${record.type === "book" ? bookAuthors(record).join(" ") : ""}`.toLocaleLowerCase("ru").includes(query))
+    .sort((a, b) => Date.parse(b.added_at) - Date.parse(a.added_at) || displayTitle(a).localeCompare(displayTitle(b), "ru"));
   byId("result-count").textContent = `Записей: ${visible.length}`;
   byId("entries").replaceChildren(...visible.map((record) => {
     const row = document.createElement("tr");
     const title = document.createElement("td");
-    title.append(element("span", "entry-title", record.title_ru), element("span", "entry-original", record.title_original), element("span", "entry-kind", typeLabels[record.type]));
+    title.append(element("span", "entry-title", displayTitle(record)));
+    if (record.title_ru.trim() && record.title_original.trim() && record.title_ru.trim() !== record.title_original.trim()) {
+      title.append(element("span", "entry-original", record.title_original));
+    }
+    if (record.type === "book") {
+      const authors = bookAuthors(record);
+      if (authors.length) title.append(element("span", "entry-author", `Автор: ${authors.join(" / ")}`));
+    }
+    title.append(element("span", "entry-kind", typeLabels[record.type]));
     const status = document.createElement("td");
     status.append(element("span", `badge ${record.status}`, statusLabels[record.status]));
-    const date = document.createElement("td");
-    const time = element("time", "", dateFormat.format(new Date(record.added_at)));
-    time.dateTime = record.added_at;
-    date.append(time);
-    row.append(title, element("td", "", record.year), status, date);
+    row.append(title, element("td", "", record.year), status,
+      dateCell(record.added_at, "Дата добавления"),
+      dateCell(record.status === "waiting" ? null : record.completed_at, record.type === "book" ? "Дата прочтения" : "Дата просмотра"));
     return row;
   }));
   byId("table-wrap").hidden = visible.length === 0;
@@ -77,7 +120,7 @@ function render() {
   byId("empty-title").textContent = empty ? "Коллекция пока пуста" : "Ничего не найдено";
   byId("empty-description").textContent = empty
     ? "Добавьте фильм, сериал или книгу через CLI."
-    : "По выбранным условиям ничего не нашлось. Попробуйте другое название или сбросьте фильтры.";
+    : `По выбранным условиям ничего не нашлось. Попробуйте ${searchAuthors ? "другое название или автора" : "другое название"} или сбросьте фильтры.`;
   byId("empty-command").hidden = !empty;
   byId("reset-filters").hidden = empty;
 }

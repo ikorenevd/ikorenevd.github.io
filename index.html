@@ -34,16 +34,16 @@
           <button data-status="watched" aria-pressed="false">Просмотрено</button>
           <button data-status="read" aria-pressed="false">Прочитано</button>
         </div>
-        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Поиск по названию" aria-label="Поиск по русскому или оригинальному названию"></label>
+        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Название или автор" aria-label="Поиск по русскому или оригинальному названию и имени автора книги"></label>
       </div>
       <div class="results-meta"><span id="result-count" role="status" aria-live="polite">Загружаем коллекцию…</span><span>Сначала новые</span></div>
       <div class="table-wrap" id="table-wrap" hidden>
-        <table><thead><tr><th scope="col">Название</th><th scope="col">Год</th><th scope="col">Статус</th><th scope="col">Добавлено</th></tr></thead><tbody id="entries"></tbody></table>
+        <table><thead><tr><th scope="col">Название</th><th scope="col">Год</th><th scope="col">Статус</th><th scope="col">Дата добавления</th><th scope="col" id="completed-heading">Дата завершения</th></tr></thead><tbody id="entries"></tbody></table>
       </div>
       <div class="empty-state" id="empty-state" hidden>
         <h2 id="empty-title">Коллекция пока пуста</h2>
         <p id="empty-description">Добавьте фильм, сериал или книгу через CLI.</p>
-        <code id="empty-command">python3 shelf.py add movie --help</code>
+        <code id="empty-command">python3 shelf.py</code>
         <button class="text-button" id="reset-filters" hidden>Сбросить фильтры</button>
       </div>
       <div class="empty-state" id="error-state" role="alert" hidden><h2>Не удалось загрузить коллекцию</h2><p>Проверьте доступность и формат JSON-каталогов. Для локального просмотра запустите сайт через HTTP-сервер.</p><button class="retry-button" id="retry">Попробовать снова</button></div>

@@ -3,3 +3,17 @@ __pycache__/
 .DS_Store
 .sites-runtime/
 src/data/.catalog.lock
+
+# Tests and their generated files
+tests/
+test/
+__tests__/
+test_*.py
+*_test.py
+*.test.*
+*.spec.*
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage/

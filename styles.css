@@ -160,6 +160,7 @@ table {
   border-collapse:collapse;
   text-align:left;
   width:100%;
+  min-width:740px;
 }
 
 th {
@@ -185,7 +186,7 @@ td:last-child,th:last-child {
 }
 
 td:first-child {
-  width:55%;
+  width:40%;
   min-width:200px;
 }
 
@@ -194,9 +195,13 @@ td:nth-child(2) {
   font-variant-numeric:tabular-nums;
 }
 
-td:last-child {
+.entry-date {
   color:var(--muted);
   white-space:nowrap;
+}
+
+.date-label {
+  display:none;
 }
 
 .entry-title {
@@ -212,6 +217,15 @@ td:last-child {
   color:var(--muted);
   font-size:.875rem;
   margin-top:5px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+
+.entry-author {
+  display:block;
+  color:#5f636d;
+  font-size:.875rem;
+  margin-top:6px;
   line-height:1.45;
   overflow-wrap:anywhere;
 }
@@ -298,52 +312,6 @@ h2 {
   border-radius:6px;
 }
 
-@media(max-width:720px) {
-  .table-wrap {
-    overflow:visible;
-  }
-  table,tbody {
-    display:block;
-  }
-  thead {
-    position:absolute;
-    width:1px;
-    height:1px;
-    overflow:hidden;
-    clip-path:inset(50%);
-    white-space:nowrap;
-  }
-  tbody tr {
-    display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
-    gap:12px;
-    align-items:center;
-    padding:22px 0;
-    border-bottom:1px solid var(--line);
-  }
-  td,td:first-child,td:last-child {
-    padding:0;
-    border:0;
-    min-width:0;
-    width:auto;
-  }
-  td:first-child {
-    grid-column:1/-1;
-  }
-  td:nth-child(2)::before {
-    content:"Год: ";
-  }
-  td:nth-child(3) {
-    justify-self:end;
-  }
-  td:last-child {
-    grid-column:1/-1;
-    white-space:normal;
-  }
-  td:last-child::before {
-    content:"Добавлено ";
-  }
-}
 
 main {
   max-width:1120px;
