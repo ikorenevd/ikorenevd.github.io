@@ -152,5 +152,16 @@
     "completed_at": "2026-09-12T04:19:16.886854+03:00",
     "author_ru": "Сергей Довлатов",
     "author_original": "Сергей Довлатов"
+  },
+  {
+    "type": "book",
+    "title_ru": "Когда мы перестали понимать мир",
+    "title_original": "Un Verdor Terrible",
+    "year": 2020,
+    "status": "waiting",
+    "added_at": "2026-09-12T04:32:00.151077+03:00",
+    "completed_at": null,
+    "author_ru": "Бенжамин Лабутат",
+    "author_original": "Benjamín Labatut"
   }
 ]
