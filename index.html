@@ -1,53 +1,16 @@
 <!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Личная коллекция фильмов, сериалов и книг.">
-  <title>Моя коллекция — фильмы, сериалы и книги</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css?v=20260912-authors">
-  <script src="app.js?v=20260912-authors" defer></script>
-</head>
-<body>
-  <main>
-    <header class="page-header" hidden>
-      <h1 id="page-title">Моя коллекция</h1>
-    </header>
-    <nav class="media-nav" aria-label="Тип произведения" id="type-filters">
-      <button class="nav-item active" data-type="all" aria-pressed="true">Все<span class="count" id="count-all">0</span></button>
-      <button class="nav-item" data-type="movie" aria-pressed="false">Фильмы<span class="count" id="count-movie">0</span></button>
-      <button class="nav-item" data-type="series" aria-pressed="false">Сериалы<span class="count" id="count-series">0</span></button>
-      <button class="nav-item" data-type="book" aria-pressed="false">Книги<span class="count" id="count-book">0</span></button>
-    </nav>
-    <section class="stats" aria-label="Статистика коллекции">
-      <div><span class="stat-number" id="stat-total">0</span><span class="stat-label">в коллекции</span></div>
-      <div><span class="stat-number" id="stat-finished">0</span><span class="stat-label" id="stat-finished-label">просмотрено и прочитано</span></div>
-      <div><span class="stat-number accent" id="stat-waiting">0</span><span class="stat-label">в ожидании</span></div>
-    </section>
-
-    <section class="catalog" aria-label="Каталог">
-      <div class="catalog-toolbar">
-        <div class="status-filters" id="status-filters" role="group" aria-label="Статус">
-          <button class="selected" data-status="all" aria-pressed="true">Все</button>
-          <button data-status="waiting" aria-pressed="false">В ожидании</button>
-          <button data-status="watched" aria-pressed="false">Просмотрено</button>
-          <button data-status="read" aria-pressed="false">Прочитано</button>
-        </div>
-        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Название или автор" aria-label="Поиск по русскому или оригинальному названию и имени автора книги"></label>
-      </div>
-      <div class="results-meta"><span id="result-count" role="status" aria-live="polite">Загружаем коллекцию…</span><span>Сначала новые</span></div>
-      <div class="table-wrap" id="table-wrap" hidden>
-        <table><thead><tr><th scope="col">Название</th><th scope="col">Год</th><th scope="col">Статус</th><th scope="col">Дата добавления</th><th scope="col" id="completed-heading">Дата завершения</th></tr></thead><tbody id="entries"></tbody></table>
-      </div>
-      <div class="empty-state" id="empty-state" hidden>
-        <h2 id="empty-title">Коллекция пока пуста</h2>
-        <p id="empty-description">Добавьте фильм, сериал или книгу через CLI.</p>
-        <code id="empty-command">python3 shelf.py</code>
-        <button class="text-button" id="reset-filters" hidden>Сбросить фильтры</button>
-      </div>
-      <div class="empty-state" id="error-state" role="alert" hidden><h2>Не удалось загрузить коллекцию</h2><p>Проверьте доступность и формат JSON-каталогов. Для локального просмотра запустите сайт через HTTP-сервер.</p><button class="retry-button" id="retry">Попробовать снова</button></div>
-    </section>
-  </main>
-</body>
-</html>
+<html lang="ru" class="read-only"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Личный органайзер: расписание, задачи и медиатека."><title>Мой органайзер</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css?v=calendar-2"><link rel="stylesheet" href="calendar.css?v=readonly-1"><script src="app.js?v=readonly-1" defer></script><script src="calendar.js?v=readonly-1" defer></script></head>
+<body><main>
+<nav class="app-nav" aria-label="Разделы"><button class="active" data-view="shelf">Полка</button><button data-view="calendar">Календарь</button><button data-view="tasks">Задачи</button></nav>
+<section id="shelf-view" class="view"><div class="view-head"><div><h1>Полка</h1><p>Фильмы, сериалы и книги</p></div><button class="primary" id="add-media">Добавить</button></div>
+<nav class="media-nav" id="type-filters"><button class="active" data-type="all">Все <span id="count-all">0</span></button><button data-type="movie">Фильмы <span id="count-movie">0</span></button><button data-type="series">Сериалы <span id="count-series">0</span></button><button data-type="book">Книги <span id="count-book">0</span></button></nav>
+<section class="stats"><div><strong id="stat-total">0</strong><span>в коллекции</span></div><div><strong id="stat-finished">0</strong><span id="stat-finished-label">просмотрено и прочитано</span></div><div><strong class="accent" id="stat-waiting">0</strong><span>в ожидании</span></div></section>
+<div class="toolbar"><div class="filters" id="status-filters"><button class="active" data-status="all">Все</button><button data-status="waiting">В ожидании</button><button data-status="watched">Просмотрено</button><button data-status="read">Прочитано</button></div><input id="search" type="search" placeholder="Название или автор"></div>
+<p class="meta" id="result-count">Загрузка…</p><div class="table-wrap"><table><thead><tr><th>Название</th><th>Год</th><th>Статус</th><th>Дата добавления</th><th id="completed-heading">Дата завершения</th><th></th></tr></thead><tbody id="entries"></tbody></table></div><div class="empty" id="shelf-empty" hidden>Записей пока нет.</div></section>
+<section id="calendar-view" class="view" hidden><div class="view-head"><div><h1>Календарь</h1><p>Личное расписание</p></div><button class="primary" id="add-event">Добавить событие</button></div><div class="calendar-controls"><button id="prev-month">←</button><h2 id="month-title"></h2><button id="next-month">→</button><button class="text-button" id="today">Сегодня</button></div><div class="calendar-grid weekdays"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div><div class="calendar-grid" id="calendar-grid"></div></section>
+<section id="tasks-view" class="view" hidden><div class="view-head"><div><h1>Задачи</h1><p>Текущие дела и сроки</p></div><button class="primary" id="add-task">Добавить задачу</button></div><div class="filters" id="task-filters"><button class="active" data-task-status="all">Все</button><button data-task-status="todo">В работе</button><button data-task-status="done">Выполнено</button></div><div class="task-list" id="task-list"></div><div class="empty" id="tasks-empty" hidden>Задач пока нет.</div></section>
+</main>
+<dialog id="editor"><form id="editor-form"><div class="dialog-head"><h2 id="editor-title">Новая запись</h2><button type="button" class="icon-button" id="close-editor">×</button></div><div id="editor-fields"></div><p class="form-error" id="form-error"></p><div class="dialog-actions"><button type="button" class="danger" id="delete-entry" hidden>Удалить</button><span></span><button type="button" id="cancel-editor">Отмена</button><button class="primary" type="submit">Сохранить</button></div></form></dialog><div class="toast" id="toast" hidden></div>
+</body></html>

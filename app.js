@@ -1,172 +1,30 @@
 "use strict";
-
-const typeLabels = { movie: "Фильм", series: "Сериал", book: "Книга" };
-const headings = { all: "Моя коллекция", movie: "Фильмы", series: "Сериалы", book: "Книги" };
-const statusLabels = { waiting: "В ожидании", watched: "Просмотрено", read: "Прочитано" };
-const state = { records: [], type: "all", status: "all", query: "" };
-const byId = (id) => document.getElementById(id);
-const dateFormat = new Intl.DateTimeFormat("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric" });
-const displayTitle = (record) => record.title_ru.trim() || record.title_original.trim();
-const bookAuthors = (record) => [...new Set([record.author_ru, record.author_original].map((name) => name.trim()).filter(Boolean))];
-
-function validateCatalog(records, types) {
-  if (!Array.isArray(records)) throw new Error("Каталог должен быть массивом");
-  for (const record of records) {
-    if (!record || !types.includes(record.type)
-      || ![record.title_ru, record.title_original].every((value) => typeof value === "string")
-      || !(record.title_ru.trim() || record.title_original.trim())
-      || (record.type === "book" && [record.author_ru, record.author_original, record.author]
-        .some((value) => value !== undefined && typeof value !== "string"))
-      || !Number.isInteger(record.year) || record.year < 1 || record.year > 9999
-      || !["waiting", record.type === "book" ? "read" : "watched"].includes(record.status)
-      || typeof record.added_at !== "string" || !Number.isFinite(Date.parse(record.added_at))
-      || (record.completed_at !== undefined && record.completed_at !== null
-        && (typeof record.completed_at !== "string" || !Number.isFinite(Date.parse(record.completed_at))))
-      || (record.status !== "waiting" && record.completed_at === null)) {
-      throw new Error("Некорректная запись каталога");
-    }
-  }
-  return records.map((record) => ({
-    ...record,
-    ...(record.type === "book" ? {
-      author_ru: record.author_ru ?? record.author ?? "",
-      author_original: record.author_original ?? "",
-    } : {}),
-    completed_at: record.status === "waiting" ? null : record.completed_at ?? record.added_at,
-  }));
+const canEdit = ["http:", "https:"].includes(location.protocol) && ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
+document.documentElement.classList.toggle("read-only", !canEdit);
+const $=id=>document.getElementById(id), files={movie:"movies",series:"series",book:"books"}, typeName={movie:"Фильм",series:"Сериал",book:"Книга"}, statusName={waiting:"В ожидании",watched:"Просмотрено",read:"Прочитано"};
+const df=new Intl.DateTimeFormat("en-GB",{day:"2-digit",month:"2-digit",year:"numeric"}),dtf=new Intl.DateTimeFormat("en-GB",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit",hourCycle:"h23"});
+const state={media:[],events:[],tasks:[],type:"all",status:"all",taskStatus:"all",query:"",month:new Date(),edit:null};
+const esc=(v="")=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inputDate=v=>{if(!v)return"";let d=new Date(v),p=n=>String(n).padStart(2,"0");return`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`};
+const iso=v=>v?new Date(v).toISOString():null, authors=x=>[...new Set([x.author_ru,x.author_original].map(v=>(v||"").trim()).filter(Boolean))], title=x=>x.title_ru.trim()||x.title_original.trim();
+function toast(message){$("toast").textContent=message;$("toast").hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$("toast").hidden=true,2500)}
+async function api(path,options={}) {
+  const method=(options.method||"GET").toUpperCase();
+  if(!canEdit && method!=="GET") throw Error("Редактирование доступно только локально");
+  if(!canEdit && !["movies","series","books","events","tasks"].includes(path)) throw Error("Неизвестный каталог");
+  const url=canEdit?`/api/${path}`:`src/data/${path}.json`;
+  const response=await fetch(url,{...options,cache:"no-store"});
+  if(!response.ok) throw Error("Не удалось загрузить или сохранить данные");
+  return response.json();
 }
-
-function element(tag, className, text) {
-  const node = document.createElement(tag);
-  node.className = className;
-  node.textContent = text;
-  return node;
-}
-
-function dateCell(value, label) {
-  const cell = element("td", "entry-date", "");
-  const caption = element("span", "date-label", `${label}:`);
-  caption.setAttribute("aria-hidden", "true");
-  cell.append(caption);
-  if (value) {
-    const time = element("time", "", dateFormat.format(new Date(value)));
-    time.dateTime = value;
-    cell.append(time);
-  } else {
-    cell.append(element("span", "", "—"));
-  }
-  return cell;
-}
-
-function render() {
-  const records = state.records;
-  for (const type of Object.keys(headings)) {
-    byId(`count-${type}`).textContent = type === "all" ? records.length : records.filter((r) => r.type === type).length;
-  }
-  const selectedRecords = records.filter((record) => state.type === "all" || record.type === state.type);
-  byId("stat-total").textContent = selectedRecords.length;
-  byId("stat-finished").textContent = selectedRecords.filter((r) => r.status !== "waiting").length;
-  byId("stat-waiting").textContent = selectedRecords.filter((r) => r.status === "waiting").length;
-  byId("stat-finished-label").textContent = state.type === "all"
-    ? "просмотрено и прочитано"
-    : state.type === "book" ? "прочитано" : "просмотрено";
-  byId("page-title").textContent = headings[state.type];
-  byId("completed-heading").textContent = state.type === "all" ? "Дата завершения"
-    : state.type === "book" ? "Дата прочтения" : "Дата просмотра";
-  const searchAuthors = state.type === "all" || state.type === "book";
-  byId("search").placeholder = searchAuthors ? "Название или автор" : "Поиск по названию";
-  byId("search").setAttribute("aria-label", searchAuthors
-    ? "Поиск по русскому или оригинальному названию и имени автора книги"
-    : "Поиск по русскому или оригинальному названию");
-  document.querySelectorAll("[data-type]").forEach((button) => {
-    const active = button.dataset.type === state.type;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
-  });
-  document.querySelectorAll("[data-status]").forEach((button) => {
-    const active = button.dataset.status === state.status;
-    button.classList.toggle("selected", active);
-    button.setAttribute("aria-pressed", String(active));
-    button.hidden = (state.type === "book" && button.dataset.status === "watched")
-      || (["movie", "series"].includes(state.type) && button.dataset.status === "read");
-  });
-  const query = state.query.trim().toLocaleLowerCase("ru");
-  const visible = selectedRecords.filter((record) => (state.status === "all" || record.status === state.status)
-    && `${record.title_ru} ${record.title_original} ${record.type === "book" ? bookAuthors(record).join(" ") : ""}`.toLocaleLowerCase("ru").includes(query))
-    .sort((a, b) => Date.parse(b.added_at) - Date.parse(a.added_at) || displayTitle(a).localeCompare(displayTitle(b), "ru"));
-  byId("result-count").textContent = `Записей: ${visible.length}`;
-  byId("entries").replaceChildren(...visible.map((record) => {
-    const row = document.createElement("tr");
-    const title = document.createElement("td");
-    title.append(element("span", "entry-title", displayTitle(record)));
-    if (record.title_ru.trim() && record.title_original.trim() && record.title_ru.trim() !== record.title_original.trim()) {
-      title.append(element("span", "entry-original", record.title_original));
-    }
-    if (record.type === "book") {
-      const authors = bookAuthors(record);
-      if (authors.length) title.append(element("span", "entry-author", `Автор: ${authors.join(" / ")}`));
-    }
-    title.append(element("span", "entry-kind", typeLabels[record.type]));
-    const status = document.createElement("td");
-    status.append(element("span", `badge ${record.status}`, statusLabels[record.status]));
-    row.append(title, element("td", "", record.year), status,
-      dateCell(record.added_at, "Дата добавления"),
-      dateCell(record.status === "waiting" ? null : record.completed_at, record.type === "book" ? "Дата прочтения" : "Дата просмотра"));
-    return row;
-  }));
-  byId("table-wrap").hidden = visible.length === 0;
-  byId("empty-state").hidden = visible.length !== 0;
-  const empty = records.length === 0;
-  byId("empty-title").textContent = empty ? "Коллекция пока пуста" : "Ничего не найдено";
-  byId("empty-description").textContent = empty
-    ? "Добавьте фильм, сериал или книгу через CLI."
-    : `По выбранным условиям ничего не нашлось. Попробуйте ${searchAuthors ? "другое название или автора" : "другое название"} или сбросьте фильтры.`;
-  byId("empty-command").hidden = !empty;
-  byId("reset-filters").hidden = empty;
-}
-
-async function load() {
-  byId("error-state").hidden = true;
-  byId("empty-state").hidden = true;
-  byId("table-wrap").hidden = true;
-  byId("result-count").textContent = "Загружаем коллекцию…";
-  try {
-    const catalogTypes = { movies: "movie", series: "series", books: "book" };
-    const catalogs = await Promise.all(Object.entries(catalogTypes).map(async ([name, type]) => {
-      const response = await fetch(`src/data/${name}.json`, { cache: "no-store" });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return validateCatalog(await response.json(), [type]);
-    }));
-    state.records = catalogs.flat();
-    render();
-  } catch (error) {
-    byId("result-count").textContent = "Коллекция недоступна";
-    byId("error-state").hidden = false;
-    console.error("Не удалось загрузить каталоги:", error);
-  }
-}
-
-byId("type-filters").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-type]");
-  if (!button) return;
-  state.type = button.dataset.type;
-  if ((state.type === "book" && state.status === "watched") || (["movie", "series"].includes(state.type) && state.status === "read")) state.status = "all";
-  if (byId("error-state").hidden) render();
-});
-byId("status-filters").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-status]");
-  if (!button) return;
-  state.status = button.dataset.status;
-  if (byId("error-state").hidden) render();
-});
-byId("search").addEventListener("input", (event) => {
-  state.query = event.target.value;
-  if (byId("error-state").hidden) render();
-});
-byId("reset-filters").addEventListener("click", () => {
-  Object.assign(state, { type: "all", status: "all", query: "" });
-  byId("search").value = "";
-  render();
-});
-byId("retry").addEventListener("click", load);
-load();
+async function load(){try{let [m,s,b,e,t]=await Promise.all(["movies","series","books","events","tasks"].map(name=>api(name)));state.media=[...m.map((x,i)=>({...x,sourceIndex:i})),...s.map((x,i)=>({...x,sourceIndex:i})),...b.map((x,i)=>({...x,sourceIndex:i}))];state.events=e;state.tasks=t;renderShelf();renderCalendar();renderTasks()}catch(e){toast(e.message)}}
+function view(name){document.querySelectorAll(".view").forEach(x=>x.hidden=x.id!==`${name}-view`);document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("active",x.dataset.view===name))}
+function renderShelf(){for(let t of["all","movie","series","book"])$("count-"+t).textContent=t==="all"?state.media.length:state.media.filter(x=>x.type===t).length;let base=state.media.filter(x=>state.type==="all"||x.type===state.type);$("stat-total").textContent=base.length;$("stat-finished").textContent=base.filter(x=>x.status!=="waiting").length;$("stat-waiting").textContent=base.filter(x=>x.status==="waiting").length;$("stat-finished-label").textContent=state.type==="book"?"прочитано":state.type==="all"?"просмотрено и прочитано":"просмотрено";$("completed-heading").textContent=state.type==="book"?"Дата прочтения":state.type==="all"?"Дата завершения":"Дата просмотра";document.querySelectorAll("[data-type]").forEach(b=>b.classList.toggle("active",b.dataset.type===state.type));document.querySelectorAll("[data-status]").forEach(b=>{b.classList.toggle("active",b.dataset.status===state.status);b.hidden=state.type==="book"&&b.dataset.status==="watched"||["movie","series"].includes(state.type)&&b.dataset.status==="read"});let q=state.query.toLocaleLowerCase("ru"),rows=base.filter(x=>(state.status==="all"||x.status===state.status)&&`${x.title_ru} ${x.title_original} ${authors(x).join(" ")}`.toLocaleLowerCase("ru").includes(q)).sort((a,b)=>Date.parse(b.added_at)-Date.parse(a.added_at));$("result-count").textContent=`Записей: ${rows.length}`;$("shelf-empty").hidden=!!rows.length;$("entries").innerHTML=rows.map(x=>`<tr><td><strong>${esc(title(x))}</strong>${x.title_ru&&x.title_original&&x.title_ru!==x.title_original?`<small>${esc(x.title_original)}</small>`:""}${x.type==="book"&&authors(x).length?`<small>Автор: ${esc(authors(x).join(" / "))}</small>`:""}<small>${typeName[x.type]}</small></td><td>${x.year}</td><td><span class="badge ${x.status}">${statusName[x.status]}</span></td><td>${df.format(new Date(x.added_at))}</td><td>${x.completed_at?df.format(new Date(x.completed_at)):"—"}</td><td><button class="row-action" data-media="${x.type}:${x.sourceIndex}">Изменить</button></td></tr>`).join("")}
+function renderCalendar(){let m=state.month.getMonth(),y=state.month.getFullYear();$("month-title").textContent=new Intl.DateTimeFormat("ru-RU",{month:"long",year:"numeric"}).format(state.month);let offset=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),html="<div class=\"day muted\"></div>".repeat(offset),today=new Date();for(let d=1;d<=days;d++){let ev=state.events.filter(e=>{let x=new Date(e.start);return x.getFullYear()===y&&x.getMonth()===m&&x.getDate()===d}).sort((a,b)=>Date.parse(a.start)-Date.parse(b.start));html+=`<div class="day ${today.getFullYear()===y&&today.getMonth()===m&&today.getDate()===d?"today":""}" data-day="${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}"><b>${d}</b>${ev.map(e=>`<button class="event" data-event="${e.id}">${new Date(e.start).toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit"})} ${esc(e.title)}</button>`).join("")}</div>`}$("calendar-grid").innerHTML=html}
+function renderTasks(){document.querySelectorAll("[data-task-status]").forEach(b=>b.classList.toggle("active",b.dataset.taskStatus===state.taskStatus));let tasks=state.tasks.filter(x=>state.taskStatus==="all"||x.status===state.taskStatus).sort((a,b)=>(a.status==="done")-(b.status==="done")||Date.parse(a.due_at||"9999-12-31")-Date.parse(b.due_at||"9999-12-31"));$("tasks-empty").hidden=!!tasks.length;$("task-list").innerHTML=tasks.map(x=>`<article class="task ${x.status}"><button class="task-check" ${canEdit?"":"disabled"} data-toggle="${x.id}">${x.status==="done"?"✓":""}</button><div><strong>${esc(x.title)}</strong>${x.notes?`<p>${esc(x.notes)}</p>`:""}<small>${x.due_at?`Срок: ${dtf.format(new Date(x.due_at))}`:"Без срока"}</small></div><button class="row-action" data-task="${x.id}">Изменить</button></article>`).join("")}
+const field=(label,name,type="text",value="",required=false)=>`<label>${label}<input name="${name}" type="${type}" value="${esc(value)}" ${required?"required":""}></label>`;
+function openEditor(kind,item=null,day=null){if(!canEdit)return;state.edit={kind,item};$("form-error").textContent="";$("delete-entry").hidden=!item;if(kind==="media"){let t=item?.type||(state.type!=="all"?state.type:"movie");$("editor-title").textContent=item?"Изменить запись":"Добавить на полку";$("editor-fields").innerHTML=`<label>Тип<select name="type"><option value="movie">Фильм</option><option value="series">Сериал</option><option value="book">Книга</option></select></label>${field("Название на русском","title_ru","text",item?.title_ru||"")}${field("Оригинальное название","title_original","text",item?.title_original||"")}<div id="author-fields">${field("Автор на русском","author_ru","text",item?.author_ru||"")}${field("Автор в оригинале","author_original","text",item?.author_original||"")}</div>${field("Год выпуска / издания","year","number",item?.year||new Date().getFullYear(),true)}<label>Статус<select name="status"></select></label>`;let s=$("editor-fields").querySelector('[name="type"]');s.value=t;let sync=()=>{let book=s.value==="book";$("author-fields").hidden=!book;let st=$("editor-fields").querySelector('[name="status"]');st.innerHTML=`<option value="waiting">В ожидании</option><option value="${book?"read":"watched"}">${book?"Прочитано":"Просмотрено"}</option>`;st.value=item?.status||"waiting"};s.onchange=sync;sync()}else if(kind==="event"){let date=day||new Date().toISOString().slice(0,10);$("editor-title").textContent=item?"Изменить событие":"Новое событие";$("editor-fields").innerHTML=`${field("Название","title","text",item?.title||"",true)}${field("Начало","start","datetime-local",inputDate(item?.start||date+"T09:00"),true)}${field("Окончание","end","datetime-local",inputDate(item?.end||date+"T10:00"),true)}<label>Заметка<textarea name="notes">${esc(item?.notes||"")}</textarea></label>`}else{$("editor-title").textContent=item?"Изменить задачу":"Новая задача";$("editor-fields").innerHTML=`${field("Название","title","text",item?.title||"",true)}${field("Срок","due_at","datetime-local",inputDate(item?.due_at))}<label>Заметка<textarea name="notes">${esc(item?.notes||"")}</textarea></label><label>Статус<select name="status"><option value="todo">В работе</option><option value="done">Выполнено</option></select></label>`;$("editor-fields").querySelector('[name="status"]').value=item?.status||"todo"}$("editor").showModal()}
+async function save(e){e.preventDefault();let data=Object.fromEntries(new FormData(e.currentTarget)),{kind,item}=state.edit;try{if(kind==="media"){if(!data.title_ru.trim()&&!data.title_original.trim())throw Error("Укажите хотя бы одно название");let p={type:data.type,title_ru:data.title_ru.trim(),title_original:data.title_original.trim(),year:Number(data.year),status:data.status,added_at:item?.added_at||new Date().toISOString(),completed_at:data.status==="waiting"?null:item?.completed_at||new Date().toISOString()};if(data.type==="book"){p.author_ru=data.author_ru.trim();p.author_original=data.author_original.trim()}if(item&&data.type!==item.type){await api(`${files[item.type]}/${item.sourceIndex}`,{method:"DELETE"});await api(files[data.type],{method:"POST",body:JSON.stringify(p)})}else await api(`${files[data.type]}${item?`/${item.sourceIndex}`:""}`,{method:item?"PUT":"POST",body:JSON.stringify(p)})}else if(kind==="event"){let p={...item,title:data.title.trim(),start:iso(data.start),end:iso(data.end),notes:data.notes.trim()};if(new Date(p.end)<new Date(p.start))throw Error("Окончание не может быть раньше начала");await api(`events${item?`/${item.id}`:""}`,{method:item?"PUT":"POST",body:JSON.stringify(p)})}else{let p={...item,title:data.title.trim(),due_at:iso(data.due_at),notes:data.notes.trim(),status:data.status,completed_at:item?.completed_at||null};await api(`tasks${item?`/${item.id}`:""}`,{method:item?"PUT":"POST",body:JSON.stringify(p)})}$("editor").close();await load();toast("Сохранено")}catch(x){$("form-error").textContent=x.message}}
+async function remove(){let{kind,item}=state.edit,path=kind==="media"?`${files[item.type]}/${item.sourceIndex}`:`${kind}s/${item.id}`;try{await api(path,{method:"DELETE"});$("editor").close();await load();toast("Удалено")}catch(x){$("form-error").textContent=x.message}}
+document.addEventListener("click",async e=>{let b=e.target.closest("button");if(!b)return;if(b.dataset.view)view(b.dataset.view);if(b.dataset.type){state.type=b.dataset.type;if(state.type==="book"&&state.status==="watched"||["movie","series"].includes(state.type)&&state.status==="read")state.status="all";renderShelf()}if(b.dataset.status){state.status=b.dataset.status;renderShelf()}if(b.dataset.taskStatus){state.taskStatus=b.dataset.taskStatus;renderTasks()}if(b.dataset.media){let[t,i]=b.dataset.media.split(":");openEditor("media",state.media.find(x=>x.type===t&&x.sourceIndex===+i))}if(b.dataset.event)openEditor("event",state.events.find(x=>x.id===b.dataset.event));if(b.dataset.task)openEditor("task",state.tasks.find(x=>x.id===b.dataset.task));if(b.dataset.toggle){let t=state.tasks.find(x=>x.id===b.dataset.toggle);await api(`tasks/${t.id}`,{method:"PUT",body:JSON.stringify({...t,status:t.status==="done"?"todo":"done"})});await load()}});
+$("search").oninput=e=>{state.query=e.target.value;renderShelf()};$("add-media").onclick=()=>openEditor("media");$("add-event").onclick=()=>openEditor("event");$("add-task").onclick=()=>openEditor("task");$("calendar-grid").ondblclick=e=>{let d=e.target.closest("[data-day]");if(d&&!e.target.closest("button"))openEditor("event",null,d.dataset.day)};$("prev-month").onclick=()=>{state.month=new Date(state.month.getFullYear(),state.month.getMonth()-1);renderCalendar()};$("next-month").onclick=()=>{state.month=new Date(state.month.getFullYear(),state.month.getMonth()+1);renderCalendar()};$("today").onclick=()=>{state.month=new Date();renderCalendar()};$("editor-form").onsubmit=save;$("close-editor").onclick=$("cancel-editor").onclick=()=>$("editor").close();$("delete-entry").onclick=remove;load();
