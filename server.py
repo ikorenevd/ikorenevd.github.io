@@ -124,7 +124,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     os.chdir(ROOT)
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
-    print(f"Личный органайзер: http://127.0.0.1:{args.port}")
+    print(f"Хранилище: http://127.0.0.1:{args.port}")
     try: server.serve_forever()
     except KeyboardInterrupt: print("\nСервер остановлен.")
     finally:
