@@ -163,5 +163,38 @@
     "completed_at": null,
     "author_ru": "Бенжамин Лабутат",
     "author_original": "Benjamín Labatut"
+  },
+  {
+    "type": "book",
+    "title_ru": "У нас была Великая Эпоха",
+    "title_original": "У нас была Великая Эпоха",
+    "year": 2026,
+    "status": "waiting",
+    "added_at": "2026-09-13T20:25:00.224Z",
+    "completed_at": null,
+    "author_ru": "Эдуард Лимонов",
+    "author_original": "Эдуард Лимонов"
+  },
+  {
+    "type": "book",
+    "title_ru": "Подросток Савенко, или Автопортрет бандита в отрочестве",
+    "title_original": "Подросток Савенко, или Автопортрет бандита в отрочестве",
+    "year": 2026,
+    "status": "waiting",
+    "added_at": "2026-09-13T20:25:23.369Z",
+    "completed_at": null,
+    "author_ru": "Эдуард Лимонов",
+    "author_original": "Эдуард Лимонов"
+  },
+  {
+    "type": "book",
+    "title_ru": "Молодой негодяй",
+    "title_original": "Молодой негодяй",
+    "year": 2026,
+    "status": "waiting",
+    "added_at": "2026-09-13T20:25:51.407Z",
+    "completed_at": null,
+    "author_ru": "Эдуард Лимонов",
+    "author_original": "Эдуард Лимонов"
   }
 ]

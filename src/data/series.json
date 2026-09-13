@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "type": "series",
+    "title_ru": "Вавилон-Берлин",
+    "title_original": "Babylon Berlin",
+    "year": 2017,
+    "status": "waiting",
+    "added_at": "2026-09-13T20:23:54.472Z",
+    "completed_at": null
+  }
+]
