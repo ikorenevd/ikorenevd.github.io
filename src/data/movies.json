@@ -61,5 +61,14 @@
     "status": "waiting",
     "added_at": "2026-09-12T03:53:52.869013+03:00",
     "completed_at": null
+  },
+  {
+    "type": "movie",
+    "title_ru": "Воины",
+    "title_original": "Warriors",
+    "year": 1979,
+    "status": "watched",
+    "added_at": "2026-09-13T22:07:25.668Z",
+    "completed_at": "2026-09-13T22:07:25.668Z"
   }
 ]
