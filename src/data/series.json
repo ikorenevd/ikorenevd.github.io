@@ -7,5 +7,14 @@
     "status": "waiting",
     "added_at": "2026-09-13T20:23:54.472Z",
     "completed_at": null
+  },
+  {
+    "type": "series",
+    "title_ru": "Ричер. Сезон 4.",
+    "title_original": "Reacher. Season 4.",
+    "year": 2026,
+    "status": "watched",
+    "added_at": "2026-09-17T07:05:19.131Z",
+    "completed_at": "2026-09-17T07:05:19.131Z"
   }
 ]
