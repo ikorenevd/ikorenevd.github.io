@@ -98,18 +98,82 @@ $("next-month").onclick=()=>moveCalendar(1);
 $("prev-month").setAttribute("aria-label","Предыдущий период");
 $("next-month").setAttribute("aria-label","Следующий период");
 
+// Keep manual date/time entry and the existing save format alongside a visual picker.
+function addDatePickers() {
+  const inputs=$("editor-fields").querySelectorAll('[data-moment], [name="until"]');
+  inputs.forEach((input,index)=>{
+    const picker=document.createElement("details");
+    picker.className="date-picker";
+    picker.open=index===0;
+    picker.innerHTML=`<summary>Выбрать дату в календаре</summary><div class="date-picker-head"><button type="button" data-step="-1" aria-label="Предыдущий месяц">←</button><strong aria-live="polite"></strong><button type="button" data-step="1" aria-label="Следующий месяц">→</button></div><div class="date-picker-weekdays" aria-hidden="true">${['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(day=>`<span>${day}</span>`).join('')}</div><div class="date-picker-days" role="group" aria-label="Выбор дня"></div><div class="date-picker-actions"><button type="button" data-today>Сегодня</button>${!input.required?'<button type="button" data-clear>Очистить дату</button>':''}</div>`;
+    // Outside the label: calendar buttons must not activate the text field.
+    input.closest("label").after(picker);
+    if(input.name==="until") {
+      // The recurrence picker follows the visibility of its date field.
+      const wrapper=document.createElement("div");
+      input.closest("label").before(wrapper);
+      wrapper.id="until-label";
+      input.closest("label").removeAttribute("id");
+      wrapper.append(input.closest("label"),picker);
+    }
+    const selectedDate=()=>{
+      try { return parseEuropean(input.value.trim().slice(0,10),false); }
+      catch { return null; }
+    };
+    let month=selectedDate()||new Date();
+    month=new Date(month.getFullYear(),month.getMonth(),1);
+    const grid=picker.querySelector('.date-picker-days');
+    const render=()=>{
+      const selected=selectedDate(),today=dayKey(new Date());
+      picker.querySelector('strong').textContent=new Intl.DateTimeFormat('ru-RU',{month:'long',year:'numeric'}).format(month);
+      let html='<span></span>'.repeat((month.getDay()+6)%7);
+      const days=new Date(month.getFullYear(),month.getMonth()+1,0).getDate();
+      for(let day=1;day<=days;day++) {
+        const date=new Date(month.getFullYear(),month.getMonth(),day),key=dayKey(date);
+        html+=`<button type="button" data-date="${key}" aria-label="${new Intl.DateTimeFormat('ru-RU',{dateStyle:'full'}).format(date)}" aria-pressed="${!!selected&&dayKey(selected)===key}" ${key===today?'aria-current="date"':''}>${day}</button>`;
+      }
+      grid.innerHTML=html;
+    };
+    const choose=date=>{
+      const withTime=input.hasAttribute('data-moment')&&!$("editor-form").elements.all_day?.checked;
+      const time=input.value.trim().match(/ (\d{2}:\d{2})$/)?.[1]||(input.name==='end'?'10:00':'09:00');
+      input.value=date?df.format(date)+(withTime?' '+time:''):'';
+      input.dispatchEvent(new Event('input',{bubbles:true}));
+      input.dispatchEvent(new Event('change',{bubbles:true}));
+    };
+    picker.addEventListener('click',e=>{
+      const button=e.target.closest('button');
+      if(!button) return;
+      if(button.dataset.step) {
+        month=new Date(month.getFullYear(),month.getMonth()+Number(button.dataset.step),1);
+        render();
+      } else if(button.dataset.date) {
+        choose(new Date(button.dataset.date+'T00:00:00'));
+        grid.querySelector(`[data-date="${button.dataset.date}"]`).focus();
+      } else if(button.hasAttribute('data-today')) choose(new Date());
+      else if(button.hasAttribute('data-clear')) choose(null);
+    });
+    input.addEventListener('input',()=>{
+      const selected=selectedDate();
+      if(selected) month=new Date(selected.getFullYear(),selected.getMonth(),1);
+      render();
+    });
+    render();
+  });
+}
+
 const basicEditor=openEditor;
 openEditor=function(kind,item=null,day=null) {
   if(!canEdit) return;
-  basicEditor(kind,item,day);
-  // Text inputs ensure the same date/time format on every OS and browser.
+  basicEditor(kind,item,day||dayKey(new Date()));
+  // Text fields preserve a consistent date/time format beside the calendars.
   $("editor-fields").querySelectorAll('input[type="datetime-local"]').forEach(input=>{
     const value=input.value;
     input.type="text"; input.placeholder="дд/мм/гггг чч:мм";
     input.value=value?`${df.format(new Date(value))} ${clockFormat.format(new Date(value))}`:"";
     input.dataset.moment="true";
   });
-  if(kind!=="event") return;
+  if(kind!=="event") { addDatePickers(); return; }
   $("editor-fields").insertAdjacentHTML("afterbegin",'<label class="all-day-choice"><input type="checkbox" name="all_day"> Весь день</label>');
   const form=$("editor-form");
   form.elements.all_day.checked=!!item?.all_day;
@@ -128,6 +192,7 @@ openEditor=function(kind,item=null,day=null) {
   form.elements.all_day.onchange=syncAllDay;syncAllDay();
   if(item) {
     $("editor-fields").insertAdjacentHTML('beforeend','<small>Изменение и удаление касается только этого события.</small>');
+    addDatePickers();
     return;
   }
   const rule=item?.recurrence;
@@ -139,6 +204,7 @@ openEditor=function(kind,item=null,day=null) {
     $("until-label").hidden=form.elements.repeat_end.value!=="until";
     $("count-label").hidden=form.elements.repeat_end.value!=="count";
   };
+  addDatePickers();
   form.elements.repeat.onchange=form.elements.repeat_end.onchange=sync;sync();
 };
 

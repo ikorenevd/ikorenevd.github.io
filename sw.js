@@ -2,10 +2,10 @@
 
 const ROOT = new URL("./", self.location.href);
 const PREFIX = `organizer:${ROOT.pathname}:`;
-const CACHE = `${PREFIX}v3`;
+const CACHE = `${PREFIX}v4`;
 const FILES = [
-  "./", "index.html", "styles.css?v=calendar-2", "calendar.css?v=readonly-1",
-  "app.js?v=readonly-1", "calendar.js?v=readonly-1", "pwa.js?v=1",
+  "./", "index.html", "styles.css?v=calendar-2", "calendar.css?v=date-picker-1",
+  "app.js?v=readonly-1", "calendar.js?v=date-picker-1", "pwa.js?v=1",
   "manifest.webmanifest", "icons/apple-touch-icon.png?v=3", "icons/icon-192.png?v=3", "icons/icon-512.png?v=3",
   "src/data/movies.json", "src/data/series.json", "src/data/books.json",
   "src/data/events.json", "src/data/tasks.json"
