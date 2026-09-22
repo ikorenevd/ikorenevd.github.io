@@ -972,5 +972,25 @@
     "recurrence": null,
     "id": "dc3ae6d4-dd7d-4fdc-acbd-36e05ef1407c",
     "created_at": "2026-09-19T21:49:54+03:00"
+  },
+  {
+    "title": "Репетиторство. Анастасия",
+    "start": "2026-09-27T09:00:00.000Z",
+    "end": "2026-09-27T09:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "2a868c4e-ab6c-4b0a-862e-39abe28d5af0",
+    "created_at": "2026-09-22T20:18:26+03:00"
+  },
+  {
+    "title": "Репетиторство. Павел.",
+    "start": "2026-09-27T11:00:00.000Z",
+    "end": "2026-09-27T12:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "ac77371e-6d25-494c-8dcf-bf7da01a9f9e",
+    "created_at": "2026-09-22T20:18:48+03:00"
   }
 ]

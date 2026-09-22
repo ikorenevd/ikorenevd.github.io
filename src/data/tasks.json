@@ -12,8 +12,8 @@
     "title": "ДЗ МатСтат",
     "due_at": "2026-09-21T12:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-09-22T20:19:06+03:00",
     "id": "6149be42-ed66-40d7-8a36-d44129f95bc5",
     "created_at": "2026-09-14T17:12:06+03:00"
   },
@@ -34,5 +34,14 @@
     "completed_at": null,
     "id": "13dd9ffc-93de-461a-9b12-3ec29b3e7975",
     "created_at": "2026-09-20T14:30:23+03:00"
+  },
+  {
+    "title": "ДЗ МатСтат",
+    "due_at": "2026-09-28T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "a4b2e11a-aaa9-46f4-b007-dc6adf639324",
+    "created_at": "2026-09-22T21:41:04+03:00"
   }
 ]

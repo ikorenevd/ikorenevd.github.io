@@ -79,5 +79,14 @@
     "status": "watched",
     "added_at": "2026-09-18T17:28:10.931Z",
     "completed_at": "2026-09-19T21:48:11+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "Площадь Сан-Бабила, 20 часов",
+    "title_original": "San Babila ore 20: un delitto inutile",
+    "year": 1976,
+    "status": "waiting",
+    "added_at": "2026-09-21T10:38:40.215Z",
+    "completed_at": null
   }
 ]
