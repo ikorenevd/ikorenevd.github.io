@@ -992,5 +992,35 @@
     "recurrence": null,
     "id": "ac77371e-6d25-494c-8dcf-bf7da01a9f9e",
     "created_at": "2026-09-22T20:18:48+03:00"
+  },
+  {
+    "title": "Репетиторство",
+    "start": "2026-09-24T08:00:00.000Z",
+    "end": "2026-09-24T09:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "c8921e75-5562-49a5-bf6c-10d00bc19761",
+    "created_at": "2026-09-24T00:05:28+03:00"
+  },
+  {
+    "title": "Репетиторство. Финал",
+    "start": "2026-09-24T16:00:00.000Z",
+    "end": "2026-09-24T17:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "69e1259e-3b4a-41fb-bb56-4f354414efdd",
+    "created_at": "2026-09-24T16:32:23+03:00"
+  },
+  {
+    "title": "Репетиторство",
+    "start": "2026-09-27T15:00:00.000Z",
+    "end": "2026-09-27T15:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "63035af4-398c-44f7-9a2f-919d0da2624f",
+    "created_at": "2026-09-25T18:12:58+03:00"
   }
 ]
