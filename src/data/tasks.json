@@ -79,5 +79,23 @@
     "completed_at": "2026-10-02T14:14:37+03:00",
     "id": "23ffcd23-bda0-45ba-a87d-14796ec60c80",
     "created_at": "2026-09-30T14:00:33+03:00"
+  },
+  {
+    "title": "Параллелька",
+    "due_at": "2026-10-08T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "4da9d87e-b1d0-4700-a08d-a0d51d9c1f66",
+    "created_at": "2026-10-04T04:08:54+03:00"
+  },
+  {
+    "title": "Доп. главы",
+    "due_at": "2026-10-09T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "09b3a24a-3eed-4e13-986a-ce8d0d59d38e",
+    "created_at": "2026-10-04T04:09:00+03:00"
   }
 ]
