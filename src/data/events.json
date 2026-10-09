@@ -1222,5 +1222,15 @@
     "recurrence": null,
     "id": "d2b17ca8-583d-4153-a462-d46b800ee4f9",
     "created_at": "2026-10-09T21:46:51+03:00"
+  },
+  {
+    "title": "Репетиторство. Александр.",
+    "start": "2026-10-10T16:00:00.000Z",
+    "end": "2026-10-10T17:00:00.000Z",
+    "all_day": false,
+    "notes": "",
+    "recurrence": null,
+    "id": "8aee818d-cace-4afd-b0a5-79e1b7846fbc",
+    "created_at": "2026-10-09T22:04:13+03:00"
   }
 ]
