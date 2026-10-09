@@ -94,8 +94,17 @@
     "title_ru": "",
     "title_original": "Exporting Raymond",
     "year": 2011,
-    "status": "waiting",
+    "status": "watched",
     "added_at": "2026-10-04T00:40:33.456Z",
-    "completed_at": null
+    "completed_at": "2026-10-07T11:58:43+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "",
+    "title_original": "Backrooms",
+    "year": 2026,
+    "status": "watched",
+    "added_at": "2026-10-09T18:44:16.399Z",
+    "completed_at": "2026-10-09T18:44:16.399Z"
   }
 ]

@@ -196,5 +196,16 @@
     "completed_at": null,
     "author_ru": "Эдуард Лимонов",
     "author_original": "Эдуард Лимонов"
+  },
+  {
+    "type": "book",
+    "title_ru": "Библия: Что было «на самом деле»?",
+    "title_original": "",
+    "year": 2022,
+    "status": "waiting",
+    "added_at": "2026-10-09T18:45:45.857Z",
+    "completed_at": null,
+    "author_ru": "Десницкий",
+    "author_original": ""
   }
 ]

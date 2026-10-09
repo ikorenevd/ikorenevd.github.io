@@ -66,8 +66,8 @@
     "title": "ДЗ МатСтат",
     "due_at": "2026-10-05T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-10-05T18:48:11+03:00",
     "id": "2a8aa66b-086c-493c-ad46-633fc849547e",
     "created_at": "2026-09-28T21:24:20+03:00"
   },
@@ -84,8 +84,8 @@
     "title": "Параллелька",
     "due_at": "2026-10-08T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-10-09T21:44:22+03:00",
     "id": "4da9d87e-b1d0-4700-a08d-a0d51d9c1f66",
     "created_at": "2026-10-04T04:08:54+03:00"
   },
@@ -93,9 +93,18 @@
     "title": "Доп. главы",
     "due_at": "2026-10-09T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-10-09T21:44:21+03:00",
     "id": "09b3a24a-3eed-4e13-986a-ce8d0d59d38e",
     "created_at": "2026-10-04T04:09:00+03:00"
+  },
+  {
+    "title": "ДЗ МатСтат",
+    "due_at": "2026-10-12T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "115fe237-d605-45af-9c3f-dd6e31b316a4",
+    "created_at": "2026-10-05T18:48:22+03:00"
   }
 ]
