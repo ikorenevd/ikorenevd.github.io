@@ -111,8 +111,8 @@
     "title": "Исправить параллельно",
     "due_at": "2026-10-16T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-10-16T16:20:19+03:00",
     "id": "a7bfa7cf-e9f9-4c85-808d-0ecf8e70fd84",
     "created_at": "2026-10-14T14:23:10+03:00"
   },
