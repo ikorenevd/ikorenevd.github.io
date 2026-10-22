@@ -124,5 +124,14 @@
     "status": "watched",
     "added_at": "2026-10-14T11:22:51.483Z",
     "completed_at": "2026-10-14T11:22:51.483Z"
+  },
+  {
+    "type": "movie",
+    "title_ru": "",
+    "title_original": "Society",
+    "year": 1989,
+    "status": "waiting",
+    "added_at": "2026-10-20T16:45:53.353Z",
+    "completed_at": null
   }
 ]
