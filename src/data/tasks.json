@@ -129,8 +129,8 @@
     "title": "Доп Главы ДЗ #3",
     "due_at": "2026-10-23T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-10-23T18:42:51+03:00",
     "id": "e9af9a05-d5db-4a0a-bed9-813e22bcf3cb",
     "created_at": "2026-10-17T11:13:47+03:00"
   },
@@ -142,5 +142,23 @@
     "completed_at": null,
     "id": "dc6b4947-f15e-444e-871c-3ff4d1c9052e",
     "created_at": "2026-10-19T23:56:58+03:00"
+  },
+  {
+    "title": "ФЯ. Слова, местоимения, глаголы(+их спряжения), числа - из диалога.",
+    "due_at": null,
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "6465135b-91cb-42de-8b5f-2e806627b0e9",
+    "created_at": "2026-10-23T21:51:47+03:00"
+  },
+  {
+    "title": "Параллелька. Отчет по распараллеливанию.",
+    "due_at": "2026-10-31T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "6537a2b0-6347-49f8-961e-9bd75aa6b828",
+    "created_at": "2026-10-24T16:01:59+03:00"
   }
 ]
