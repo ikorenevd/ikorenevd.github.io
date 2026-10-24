@@ -61,5 +61,14 @@
     "status": "watched",
     "added_at": "2026-10-16T21:22:51.050Z",
     "completed_at": "2026-10-16T21:22:51.050Z"
+  },
+  {
+    "type": "series",
+    "title_ru": "",
+    "title_original": "Unsere Mütter, unsere Väter",
+    "year": 2013,
+    "status": "waiting",
+    "added_at": "2026-10-24T16:40:54.146Z",
+    "completed_at": null
   }
 ]

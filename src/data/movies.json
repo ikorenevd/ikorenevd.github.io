@@ -133,5 +133,32 @@
     "status": "waiting",
     "added_at": "2026-10-20T16:45:53.353Z",
     "completed_at": null
+  },
+  {
+    "type": "movie",
+    "title_ru": "",
+    "title_original": "Old School",
+    "year": 2003,
+    "status": "waiting",
+    "added_at": "2026-10-24T16:41:09.527Z",
+    "completed_at": null
+  },
+  {
+    "type": "movie",
+    "title_ru": "",
+    "title_original": "Stalingrad",
+    "year": 1993,
+    "status": "waiting",
+    "added_at": "2026-10-24T16:41:36.344Z",
+    "completed_at": null
+  },
+  {
+    "type": "movie",
+    "title_ru": "",
+    "title_original": "Der Hauptmann",
+    "year": 2017,
+    "status": "waiting",
+    "added_at": "2026-10-24T16:41:54.578Z",
+    "completed_at": null
   }
 ]
