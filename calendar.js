@@ -57,6 +57,26 @@ function entryButton(event,date,next) {
   return `<button class="event ${event.mediaKey?'media-event':event.taskId?'task-event':event.all_day?'all-day-event':''}" ${target}><time>${label}</time> ${esc(event.title)}</button>`;
 }
 
+function renderOverdueTasks() {
+  const now=Date.now(), overdue=[];
+  for(const task of state.tasks) {
+    if(task.status==="done" || !task.due_at) continue;
+    const due=new Date(task.due_at);
+    if(due<now) overdue.push({task,due});
+  }
+  overdue.sort((a,b)=>a.due-b.due);
+  $("overdue-tasks").hidden=!overdue.length;
+  $("overdue-list").innerHTML=overdue.map(({task,due})=>{
+    const content=`<strong>${esc(task.title)}</strong><time datetime="${due.toISOString()}">${dtf.format(due)}</time>`;
+    const row=canEdit
+      ? `<button type="button" class="overdue-task" data-task="${esc(task.id)}">${content}</button>`
+      : `<div class="overdue-task">${content}</div>`;
+    return `<li>${row}</li>`;
+  }).join("");
+}
+
+document.querySelector('[data-view="calendar"]').addEventListener("click",renderOverdueTasks);
+
 const controls = document.createElement("div");
 controls.className = "filters calendar-modes";
 controls.innerHTML = '<button data-mode="day">День</button><button data-mode="week">Неделя</button><button data-mode="month" class="active">Месяц</button>';
@@ -67,6 +87,7 @@ controls.addEventListener("click", e => {
 });
 
 renderCalendar = function () {
+  renderOverdueTasks();
   const mode=state.calendarMode, anchor=new Date(state.month);
   anchor.setHours(0,0,0,0);
   const from=mode==="month" ? new Date(anchor.getFullYear(),anchor.getMonth(),1)
