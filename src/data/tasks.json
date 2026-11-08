@@ -183,8 +183,8 @@
     "title": "Паралеллька",
     "due_at": "2026-11-06T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-11-06T20:09:59+03:00",
     "id": "51b5cb3d-ab7d-42c7-9cf3-e72572b3b5aa",
     "created_at": "2026-11-03T19:04:13+03:00"
   },
