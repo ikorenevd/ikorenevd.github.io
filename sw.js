@@ -2,13 +2,14 @@
 
 const ROOT = new URL("./", self.location.href);
 const PREFIX = `organizer:${ROOT.pathname}:`;
-const CACHE = `${PREFIX}v5`;
+const CACHE = `${PREFIX}v10`;
 const FILES = [
   "./", "index.html", "styles.css?v=calendar-2", "calendar.css?v=overdue-1",
-  "app.js?v=readonly-1", "calendar.js?v=overdue-1", "pwa.js?v=1",
+  "app.js?v=french-2", "calendar.js?v=overdue-1", "pwa.js?v=1",
+  "french.js?v=4", "french.css?v=4",
   "manifest.webmanifest", "icons/apple-touch-icon.png?v=3", "icons/icon-192.png?v=3", "icons/icon-512.png?v=3",
   "src/data/movies.json", "src/data/series.json", "src/data/books.json",
-  "src/data/events.json", "src/data/tasks.json"
+  "src/data/events.json", "src/data/tasks.json", "src/data/french.json"
 ];
 const allowedPaths = new Set(FILES.map(file => new URL(file, ROOT).pathname));
 

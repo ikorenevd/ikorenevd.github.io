@@ -11,10 +11,13 @@ function toast(message){$("toast").textContent=message;$("toast").hidden=false;c
 async function api(path,options={}) {
   const method=(options.method||"GET").toUpperCase();
   if(!canEdit && method!=="GET") throw Error("Редактирование доступно только локально");
-  if(!canEdit && !["movies","series","books","events","tasks"].includes(path)) throw Error("Неизвестный каталог");
+  if(!canEdit && !["movies","series","books","events","tasks","french"].includes(path)) throw Error("Неизвестный каталог");
   const url=canEdit?`/api/${path}`:`src/data/${path}.json`;
   const response=await fetch(url,{...options,cache:"no-store"});
-  if(!response.ok) throw Error("Не удалось загрузить или сохранить данные");
+  if (!response.ok) {
+    const failure = await response.json().catch(() => null);
+    throw Error(failure?.error || "Не удалось загрузить или сохранить данные");
+  }
   return response.json();
 }
 async function load(){try{let [m,s,b,e,t]=await Promise.all(["movies","series","books","events","tasks"].map(name=>api(name)));state.media=[...m.map((x,i)=>({...x,sourceIndex:i})),...s.map((x,i)=>({...x,sourceIndex:i})),...b.map((x,i)=>({...x,sourceIndex:i}))];state.events=e;state.tasks=t;renderShelf();renderCalendar();renderTasks()}catch(e){toast(e.message)}}

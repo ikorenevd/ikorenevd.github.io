@@ -1,0 +1,1422 @@
+[
+  {
+    "id": "fr-word-001",
+    "kind": "word",
+    "front": "bonjour",
+    "back": "здравствуйте, добрый день",
+    "example": "Bonjour, madame !"
+  },
+  {
+    "id": "fr-word-002",
+    "kind": "word",
+    "front": "au revoir",
+    "back": "до свидания",
+    "example": "Au revoir et à demain !"
+  },
+  {
+    "id": "fr-word-003",
+    "kind": "word",
+    "front": "s’il vous plaît",
+    "back": "пожалуйста (в просьбе)",
+    "example": "Un café, s’il vous plaît."
+  },
+  {
+    "id": "fr-word-004",
+    "kind": "word",
+    "front": "merci",
+    "back": "спасибо",
+    "example": "Merci pour votre aide."
+  },
+  {
+    "id": "fr-word-005",
+    "kind": "word",
+    "front": "pardon",
+    "back": "извините",
+    "example": "Pardon, où sont les toilettes ?"
+  },
+  {
+    "id": "fr-word-006",
+    "kind": "word",
+    "front": "enchanté / enchantée",
+    "back": "приятно познакомиться",
+    "example": "Enchantée de faire votre connaissance."
+  },
+  {
+    "id": "fr-word-007",
+    "kind": "word",
+    "front": "à bientôt",
+    "back": "до скорого",
+    "example": "Merci et à bientôt !"
+  },
+  {
+    "id": "fr-word-008",
+    "kind": "word",
+    "front": "d’accord",
+    "back": "хорошо, согласен",
+    "example": "D’accord, on se retrouve à huit heures."
+  },
+  {
+    "id": "fr-word-009",
+    "kind": "word",
+    "front": "aujourd’hui",
+    "back": "сегодня",
+    "example": "Aujourd’hui, je travaille."
+  },
+  {
+    "id": "fr-word-010",
+    "kind": "word",
+    "front": "demain",
+    "back": "завтра",
+    "example": "On se voit demain."
+  },
+  {
+    "id": "fr-word-011",
+    "kind": "word",
+    "front": "hier",
+    "back": "вчера",
+    "example": "J’ai travaillé hier."
+  },
+  {
+    "id": "fr-word-012",
+    "kind": "word",
+    "front": "maintenant",
+    "back": "сейчас",
+    "example": "Je dois partir maintenant."
+  },
+  {
+    "id": "fr-word-013",
+    "kind": "word",
+    "front": "souvent",
+    "back": "часто",
+    "example": "Je prends souvent le métro."
+  },
+  {
+    "id": "fr-word-014",
+    "kind": "word",
+    "front": "toujours",
+    "back": "всегда",
+    "example": "Elle arrive toujours à l’heure."
+  },
+  {
+    "id": "fr-word-015",
+    "kind": "word",
+    "front": "parfois",
+    "back": "иногда",
+    "example": "Parfois, je rentre tard."
+  },
+  {
+    "id": "fr-word-016",
+    "kind": "word",
+    "front": "la maison",
+    "back": "дом",
+    "example": "Je rentre à la maison."
+  },
+  {
+    "id": "fr-word-017",
+    "kind": "word",
+    "front": "la chambre",
+    "back": "комната, спальня",
+    "example": "La chambre est petite."
+  },
+  {
+    "id": "fr-word-018",
+    "kind": "word",
+    "front": "la rue",
+    "back": "улица",
+    "example": "Cette rue est très calme."
+  },
+  {
+    "id": "fr-word-019",
+    "kind": "word",
+    "front": "la gare",
+    "back": "железнодорожная станция, вокзал",
+    "example": "La gare est près d’ici."
+  },
+  {
+    "id": "fr-word-020",
+    "kind": "word",
+    "front": "le billet",
+    "back": "билет",
+    "example": "Je voudrais un billet pour Lyon."
+  },
+  {
+    "id": "fr-word-021",
+    "kind": "word",
+    "front": "le train",
+    "back": "поезд",
+    "example": "Le train part à neuf heures."
+  },
+  {
+    "id": "fr-word-022",
+    "kind": "word",
+    "front": "le livre",
+    "back": "книга",
+    "example": "Je lis un livre en français."
+  },
+  {
+    "id": "fr-word-023",
+    "kind": "word",
+    "front": "le cahier",
+    "back": "тетрадь",
+    "example": "J’écris la date dans mon cahier."
+  },
+  {
+    "id": "fr-word-024",
+    "kind": "word",
+    "front": "le cours",
+    "back": "занятие, курс",
+    "example": "Le cours commence à dix heures."
+  },
+  {
+    "id": "fr-word-025",
+    "kind": "word",
+    "front": "le travail",
+    "back": "работа",
+    "example": "Je vais au travail à pied."
+  },
+  {
+    "id": "fr-word-026",
+    "kind": "word",
+    "front": "le temps",
+    "back": "время, погода",
+    "example": "Je n’ai pas le temps."
+  },
+  {
+    "id": "fr-word-027",
+    "kind": "word",
+    "front": "la question",
+    "back": "вопрос",
+    "example": "J’ai une question."
+  },
+  {
+    "id": "fr-word-028",
+    "kind": "word",
+    "front": "la réponse",
+    "back": "ответ",
+    "example": "Je ne connais pas la réponse."
+  },
+  {
+    "id": "fr-word-029",
+    "kind": "word",
+    "front": "l’eau (f.)",
+    "back": "вода",
+    "example": "Je bois de l’eau."
+  },
+  {
+    "id": "fr-word-030",
+    "kind": "word",
+    "front": "le pain",
+    "back": "хлеб",
+    "example": "J’achète du pain."
+  },
+  {
+    "id": "fr-word-031",
+    "kind": "word",
+    "front": "le repas",
+    "back": "приём пищи, трапеза",
+    "example": "Le repas est prêt."
+  },
+  {
+    "id": "fr-word-032",
+    "kind": "word",
+    "front": "la journée",
+    "back": "день (как промежуток времени)",
+    "example": "Bonne journée !"
+  },
+  {
+    "id": "fr-word-033",
+    "kind": "word",
+    "front": "le soir",
+    "back": "вечер",
+    "example": "Je lis le soir."
+  },
+  {
+    "id": "fr-word-034",
+    "kind": "word",
+    "front": "le matin",
+    "back": "утро",
+    "example": "Je prends le bus le matin."
+  },
+  {
+    "id": "fr-word-035",
+    "kind": "word",
+    "front": "le chemin",
+    "back": "путь, дорога",
+    "example": "Je connais le chemin."
+  },
+  {
+    "id": "fr-word-036",
+    "kind": "word",
+    "front": "l’heure (f.)",
+    "back": "час, время",
+    "example": "Quelle heure est-il ?"
+  },
+  {
+    "id": "fr-word-037",
+    "kind": "conjugation",
+    "front": "chercher",
+    "back": "Présent\nje cherche\ntu cherches\nil/elle cherche\nnous cherchons\nvous cherchez\nils/elles cherchent\n\nImparfait\nje cherchais\ntu cherchais\nil/elle cherchait\nnous cherchions\nvous cherchiez\nils/elles cherchaient\n\nPassé composé\nj’ai cherché\ntu as cherché\nil/elle a cherché\nnous avons cherché\nvous avez cherché\nils/elles ont cherché",
+    "translation": "искать",
+    "example": "Je cherche mes clés.",
+    "previous_ids": [
+      "923d60e6-8fde-4eaf-908e-a73cef238590",
+      "e9787f4f-c8ae-4dbf-a798-0463fbb13a1e",
+      "99f3c7c3-4729-429c-a0a3-293a371e9dd0",
+      "6e2bc17c-7c08-4ee6-a84b-8e89506f6369",
+      "942377dd-47d7-443c-9abf-805eeb0ae416",
+      "187a8498-7a88-45b0-b53c-69d6dcf2865f",
+      "6202cb9e-e0f1-4ec7-a4c9-cac894f3d5d9",
+      "fecb31da-eb6b-43c7-a10e-6b034c1f6685",
+      "4dd4eb20-2f2f-4008-99b5-6f79d27aa906",
+      "756d47f7-8eec-461d-b5ba-69507836eaa7",
+      "1a89029f-4791-4eee-aa8f-af5c656a0a09",
+      "4b8cf859-24f0-413e-8b7a-e6b7ee053a5c",
+      "9998f10a-e842-4bba-b24e-a84f20026ab3",
+      "50bf8641-2fe5-4b69-98dc-9089f8503be1",
+      "d0007ea1-3908-408c-8db6-f6fc450c657b",
+      "2a1fe3b6-7b0b-4901-8b54-d89cfbd7cf8c",
+      "78af7f2f-ba3e-4f44-9c2c-064d110018d3",
+      "6e9f40c8-a878-480c-92de-7fb0b60e1f0a"
+    ]
+  },
+  {
+    "id": "fr-word-038",
+    "kind": "conjugation",
+    "front": "trouver",
+    "back": "Présent\nje trouve\ntu trouves\nil/elle trouve\nnous trouvons\nvous trouvez\nils/elles trouvent\n\nImparfait\nje trouvais\ntu trouvais\nil/elle trouvait\nnous trouvions\nvous trouviez\nils/elles trouvaient\n\nPassé composé\nj’ai trouvé\ntu as trouvé\nil/elle a trouvé\nnous avons trouvé\nvous avez trouvé\nils/elles ont trouvé",
+    "translation": "находить",
+    "example": "Je ne trouve pas mon téléphone.",
+    "previous_ids": [
+      "53793989-e97c-430f-9fed-443a6303831c",
+      "2d04eed5-a215-43d3-9e67-b9f30ced8740",
+      "0676c6f7-5900-49fa-b133-dcde95d455e8",
+      "fd106471-2010-42e9-b793-077244a416e5",
+      "969d8d10-37fc-4a28-8a99-0ba4e32f8402",
+      "a5897f3b-2db4-4e66-afcb-beebb22c7a07",
+      "a2d922db-c233-471d-9323-9bb2155defc6",
+      "fb429c8c-ab7d-4921-96a7-127ba847b114",
+      "850581e8-3d41-471f-bd43-df1c4c717804",
+      "edb9664f-975f-459a-b8f8-c9fa26a3eb9c",
+      "769082f0-f61a-4cf6-98d3-c8c491178178",
+      "67c7ab6d-1961-43d5-90f2-61ccc04ac78c",
+      "f8ac0817-f7ff-4905-9ddf-6a67c32debe7",
+      "cadc2b07-3372-4b6e-9393-40aa9f8fc85a",
+      "0032dad4-f10c-465d-abda-3f7f521853d9",
+      "78bde645-26c7-4bca-8f5a-8f19f79d3eb4",
+      "c2a81406-7b8c-4dab-aaca-0a99ebe25bd8",
+      "f9b79311-3d4c-4ee4-87bd-f5f3e7ec22da"
+    ]
+  },
+  {
+    "id": "fr-word-039",
+    "kind": "conjugation",
+    "front": "écouter",
+    "back": "Présent\nj’écoute\ntu écoutes\nil/elle écoute\nnous écoutons\nvous écoutez\nils/elles écoutent\n\nImparfait\nj’écoutais\ntu écoutais\nil/elle écoutait\nnous écoutions\nvous écoutiez\nils/elles écoutaient\n\nPassé composé\nj’ai écouté\ntu as écouté\nil/elle a écouté\nnous avons écouté\nvous avez écouté\nils/elles ont écouté",
+    "translation": "слушать",
+    "example": "J’écoute de la musique.",
+    "previous_ids": [
+      "e021a9ad-0e68-43f0-b39a-5442f26d10dd",
+      "31581016-c9d7-4d93-87f5-13cea48aa27e",
+      "8d4c04f2-0572-43ac-ab6b-e09a6c934533",
+      "e2ad8dce-183a-4de4-aea9-63785e4c0c13",
+      "234af467-eb3a-4527-986c-823850e6e67e",
+      "4ae9951b-f416-4fd0-99aa-1e1a6221cb84",
+      "6a666b06-9f7d-44ce-af31-c706900ef96c",
+      "be347ee3-82b8-4928-a517-52a23ce107fa",
+      "50812952-49df-486e-8549-b57400847dc5",
+      "4acd70ca-ee49-4abc-a2e7-33910edf1e02",
+      "0c84b0f5-32a1-41f6-a700-cd21dd445ad3",
+      "3d56c889-a2d8-49b3-89cc-bc44c624d58f",
+      "ad243c4c-9816-4f56-87a2-468d8f91f001",
+      "ce1e8657-7b13-40c5-97a5-d55b99e4da2d",
+      "5685b17d-0308-442d-a7dd-199885d5660b",
+      "dc7c2e4f-5b35-4ba7-8d20-75a74d30f4e7",
+      "d6dae44b-7645-4711-a0a6-04aad5131fba",
+      "7082ba96-fee2-4d56-9a54-c28aa9749e43"
+    ]
+  },
+  {
+    "id": "fr-word-040",
+    "kind": "conjugation",
+    "front": "apprendre",
+    "back": "Présent\nj’apprends\ntu apprends\nil/elle apprend\nnous apprenons\nvous apprenez\nils/elles apprennent\n\nImparfait\nj’apprenais\ntu apprenais\nil/elle apprenait\nnous apprenions\nvous appreniez\nils/elles apprenaient\n\nPassé composé\nj’ai appris\ntu as appris\nil/elle a appris\nnous avons appris\nvous avez appris\nils/elles ont appris",
+    "translation": "учить, узнавать",
+    "example": "J’apprends le français.",
+    "previous_ids": [
+      "208376c2-6caf-47a3-964b-516eb19198e9",
+      "4cf7217a-8de7-46f3-b405-a25d7fde7f05",
+      "8db459c5-babb-4dc0-9ccd-88406c2b0dce",
+      "d956cad6-c70d-43c9-9068-dc135a66584e",
+      "43d24c6a-9eca-4fd3-9c83-68a22c765e6a",
+      "051a791c-62e2-4b3c-90f4-cb6f8f2e958c",
+      "ab786051-f9d6-4bd2-81b4-5a7bb5085e0f",
+      "b701202a-dfc8-41e5-a1b4-50ee34b3dc59",
+      "22c3ed4f-9a6f-413c-a4fb-1c9c778d48bb",
+      "801db439-0b76-4c3d-a02c-c3e5726a3b5c",
+      "fbb0723a-970b-40ce-8174-53971f236c38",
+      "23532c78-3327-44f4-ae2d-a53e47871358",
+      "7c650037-75ce-4b20-bce4-e821ddb9710a",
+      "e7a4cf09-52eb-4768-b010-606898c3a8b7",
+      "4569f88f-e363-49c1-a7ae-afea4e2b6985",
+      "df244d17-d50a-4a99-b111-83651648ce53",
+      "77b84097-b469-4a9d-a96a-888deff7be0f",
+      "d593b5c3-bcee-45d7-b3f5-1f4eb73aeb78"
+    ]
+  },
+  {
+    "id": "fr-word-041",
+    "kind": "conjugation",
+    "front": "comprendre",
+    "back": "Présent\nje comprends\ntu comprends\nil/elle comprend\nnous comprenons\nvous comprenez\nils/elles comprennent\n\nImparfait\nje comprenais\ntu comprenais\nil/elle comprenait\nnous comprenions\nvous compreniez\nils/elles comprenaient\n\nPassé composé\nj’ai compris\ntu as compris\nil/elle a compris\nnous avons compris\nvous avez compris\nils/elles ont compris",
+    "translation": "понимать",
+    "example": "Je ne comprends pas ce mot.",
+    "previous_ids": [
+      "e42a0e14-ab96-4d35-8325-04854fbe4ba3",
+      "c7c2e798-c310-4121-af60-6910309ae0af",
+      "83c72f6a-a805-4375-b780-e73befdd1b4b",
+      "3be33d87-9650-4d84-bcbc-8cbb450ad276",
+      "0924c936-f6c5-4d45-a5a4-f5f9806ef158",
+      "f95e805f-1402-46bc-b353-87c64d27ff49",
+      "e9a95e68-8b5d-4225-abfe-2df515480efd",
+      "b63700c8-9a88-4543-9356-9e9cab9bc00c",
+      "0c56cf64-4b54-4e20-886a-b9c235c4a820",
+      "7287cbc0-2ad8-499d-9f40-9558f2f5f15f",
+      "fbdb806f-e43f-4f4f-ba34-e3f5ad1fb768",
+      "e7f08f5b-7f27-457e-aac5-3cb0859f07c9",
+      "44d750f4-5888-43b9-bf6b-1f4c43445b24",
+      "87c56d8d-c68e-4a82-9512-8450728543f0",
+      "925cbae6-48a6-47c6-9854-960a97a50e50",
+      "2613eab1-344f-48d7-8a8b-c8491522549e",
+      "13c1086d-7598-4173-bcb0-428fd6dbaa10",
+      "b48a22c2-e1bb-4580-967e-c08691263b2f"
+    ]
+  },
+  {
+    "id": "fr-word-042",
+    "kind": "conjugation",
+    "front": "écrire",
+    "back": "Présent\nj’écris\ntu écris\nil/elle écrit\nnous écrivons\nvous écrivez\nils/elles écrivent\n\nImparfait\nj’écrivais\ntu écrivais\nil/elle écrivait\nnous écrivions\nvous écriviez\nils/elles écrivaient\n\nPassé composé\nj’ai écrit\ntu as écrit\nil/elle a écrit\nnous avons écrit\nvous avez écrit\nils/elles ont écrit",
+    "translation": "писать",
+    "example": "Elle écrit un message.",
+    "previous_ids": [
+      "4e8586d5-1a8d-42a6-be4a-3fb22b5e9268",
+      "c8bf96c7-0c22-4d63-b57f-30e799652d56",
+      "7bcf7dbe-6c52-40c6-91a8-d2050785701f",
+      "95bb305f-c263-49ab-9530-393d28f974f4",
+      "df14282d-7a83-4497-90a6-3219eb616e9c",
+      "e8758994-4b82-44fd-91bc-17f820a0b5b8",
+      "3e1b12e6-276f-4f34-ad89-c18c02cd4d02",
+      "14a2c0e7-9fa7-4705-84fd-78e167599c86",
+      "144bd8e0-9069-4eac-9656-3c0b1e200adc",
+      "ab456ca6-bdd8-456b-ac14-26966139dbf2",
+      "3e237da1-5391-4f6b-9d10-3e169d4c019b",
+      "2de48f7f-a577-4093-9b7f-14f9fef38139",
+      "d019518c-b65b-4d47-9686-4f46c7f37aa3",
+      "e51ff7b8-7452-457f-9bb5-0d0f8513ee14",
+      "ad3acb01-85ef-4338-9799-7682d82ef6ce",
+      "4a2a025b-dc39-4f1e-a040-a9e88220f3db",
+      "0fbfafbf-b22b-48ef-836b-8a2b6873db44",
+      "a1af365f-d13b-4bec-b11c-2c331ccc811c"
+    ]
+  },
+  {
+    "id": "fr-word-043",
+    "kind": "conjugation",
+    "front": "lire",
+    "back": "Présent\nje lis\ntu lis\nil/elle lit\nnous lisons\nvous lisez\nils/elles lisent\n\nImparfait\nje lisais\ntu lisais\nil/elle lisait\nnous lisions\nvous lisiez\nils/elles lisaient\n\nPassé composé\nj’ai lu\ntu as lu\nil/elle a lu\nnous avons lu\nvous avez lu\nils/elles ont lu",
+    "translation": "читать",
+    "example": "Nous lisons le journal.",
+    "previous_ids": [
+      "c62be441-bc05-4328-829d-ceef19abf839",
+      "aa091fd4-77c5-4080-bc69-04e29c44c7a7",
+      "aff655be-cde3-4ec2-9225-157b7de692a3",
+      "2db903b0-0fc2-4d23-a3b3-00a5580431b5",
+      "be93b0ac-0879-4518-9785-5af1f6b2381d",
+      "0b696348-1552-4703-abde-6bee4e7aa7d4",
+      "22e81757-5fc0-450f-9edc-f0a6fe58c5a6",
+      "46645ea4-8725-4927-ad3f-d3b7cd04342a",
+      "25dd0e75-8455-4825-ae94-2605e9c07a7b",
+      "8868c8aa-69ef-4d91-9904-d50f5e856bb7",
+      "742c88fd-2ebc-43df-a5e6-605c3b1e9f5e",
+      "bd2a30ec-5552-4d71-80ea-e6e236bd2ec2",
+      "9a02d558-a0fc-4dd8-80fc-458411c68a3b",
+      "4d183929-0ff4-4cd6-8ea7-b97b79048e0f",
+      "64fae0de-485a-44af-aa07-80d090f9698b",
+      "35625f8a-bc4c-486c-97af-401dd44e802d",
+      "a7bd36ed-7d9c-48e3-af08-71a608aaa590",
+      "b25ce3a8-9c0b-4d83-a244-569dbbfff1e4"
+    ]
+  },
+  {
+    "id": "fr-word-044",
+    "kind": "conjugation",
+    "front": "attendre",
+    "back": "Présent\nj’attends\ntu attends\nil/elle attend\nnous attendons\nvous attendez\nils/elles attendent\n\nImparfait\nj’attendais\ntu attendais\nil/elle attendait\nnous attendions\nvous attendiez\nils/elles attendaient\n\nPassé composé\nj’ai attendu\ntu as attendu\nil/elle a attendu\nnous avons attendu\nvous avez attendu\nils/elles ont attendu",
+    "translation": "ждать",
+    "example": "J’attends le bus.",
+    "previous_ids": [
+      "5f8d2458-97c5-4fe5-b0b7-84b840421cf3",
+      "bc109f4b-1d25-460d-846a-3e2ea050fc24",
+      "3c9cbbed-77c7-413b-ad4d-6d5f944c98aa",
+      "ee6a3efc-46c9-4bfa-948d-1c8cb49c831f",
+      "50107d6e-58f1-4a23-a937-998ae9c51c7e",
+      "95b78ab4-3e0f-46a9-9e0b-f34de587e6f9",
+      "3787fed9-2734-4473-8848-7a6b38d39143",
+      "ef5b681e-a11a-4b94-b856-a01d921d5559",
+      "bd53b7cc-ca8a-423d-9ecb-06f91f2a53d2",
+      "286a31ed-4798-4d01-8f8e-af66fb1c4e80",
+      "59931755-533b-4f75-a8d3-37df95b750b5",
+      "883e64a5-8c23-4a44-a273-2a8824954883",
+      "99320f9e-fb36-4cd9-9074-fb44baf2ce4d",
+      "f1a8c591-5374-4fb9-9d5e-a8de082e6232",
+      "2fe6d999-59e1-4474-b689-5bbff77f9cab",
+      "3386b627-0dd3-4410-9ce1-ba8fec61fa9c",
+      "c579cac1-1748-4126-8175-b061e689226c",
+      "084864e9-8a84-44b5-b8a7-824d856f5d77"
+    ]
+  },
+  {
+    "id": "fr-word-045",
+    "kind": "conjugation",
+    "front": "demander",
+    "back": "Présent\nje demande\ntu demandes\nil/elle demande\nnous demandons\nvous demandez\nils/elles demandent\n\nImparfait\nje demandais\ntu demandais\nil/elle demandait\nnous demandions\nvous demandiez\nils/elles demandaient\n\nPassé composé\nj’ai demandé\ntu as demandé\nil/elle a demandé\nnous avons demandé\nvous avez demandé\nils/elles ont demandé",
+    "translation": "спрашивать, просить",
+    "example": "Je demande l’adresse.",
+    "previous_ids": [
+      "e6c721e0-c794-4536-bd3d-1d8443901164",
+      "79e38433-b41d-4aa7-b07d-dc398287d6b2",
+      "e6e13a14-cc1a-4c9b-980d-968c43b9c22a",
+      "0d7d0c39-66e3-4731-a387-ee40db3923e9",
+      "c252db5d-7844-402b-b591-34684bb18826",
+      "065d68e6-cd45-48f5-ac39-2a3dfd0fea65",
+      "68998f93-b35b-4f78-b57f-fed225123e20",
+      "0d744c97-b62d-4a29-b588-e70364f37112",
+      "e87b8cfe-9dda-490e-8e23-62aae5d002c4",
+      "c96172de-25b0-4d2b-a711-d527f0e52bc8",
+      "b487e461-72cc-40bb-844e-3ea8c754c667",
+      "d4b62264-4291-4897-b6b7-84e4550c6bd1",
+      "8f891def-e107-473f-bc0e-6c4ba3e7b302",
+      "0257f590-c98d-41ed-a205-c7c3de80bf1e",
+      "e6363317-ca7c-4d7a-8bfb-e8d1ad8fd183",
+      "43877009-8597-4bb1-9358-b52451407f0d",
+      "12bd5ff3-380a-48ea-943d-1207d67b2ef3",
+      "1101639b-4a65-4174-bf60-ba2e80af4636"
+    ]
+  },
+  {
+    "id": "fr-word-046",
+    "kind": "word",
+    "front": "répondre à",
+    "back": "отвечать на, отвечать кому-либо",
+    "example": "Il répond à la question."
+  },
+  {
+    "id": "fr-word-047",
+    "kind": "word",
+    "front": "avoir besoin de",
+    "back": "нуждаться в, иметь потребность в",
+    "example": "J’ai besoin de temps."
+  },
+  {
+    "id": "fr-word-048",
+    "kind": "word",
+    "front": "avoir envie de",
+    "back": "хотеть, иметь желание",
+    "example": "J’ai envie de lire."
+  },
+  {
+    "id": "fr-word-049",
+    "kind": "word",
+    "front": "tout de suite",
+    "back": "сразу, сейчас же",
+    "example": "J’arrive tout de suite."
+  },
+  {
+    "id": "fr-word-050",
+    "kind": "word",
+    "front": "en train de",
+    "back": "в процессе действия, прямо сейчас",
+    "example": "Je suis en train de travailler."
+  },
+  {
+    "id": "fr-etre-present-je",
+    "kind": "conjugation",
+    "front": "être",
+    "back": "Présent\nje suis\ntu es\nil/elle est\nnous sommes\nvous êtes\nils/elles sont\n\nImparfait\nj’étais\ntu étais\nil/elle était\nnous étions\nvous étiez\nils/elles étaient\n\nPassé composé\nj’ai été\ntu as été\nil/elle a été\nnous avons été\nvous avez été\nils/elles ont été",
+    "previous_ids": [
+      "fr-etre-present-tu",
+      "fr-etre-present-il",
+      "fr-etre-present-nous",
+      "fr-etre-present-vous",
+      "fr-etre-present-ils",
+      "fr-etre-imparfait-je",
+      "fr-etre-imparfait-tu",
+      "fr-etre-imparfait-il",
+      "fr-etre-imparfait-nous",
+      "fr-etre-imparfait-vous",
+      "fr-etre-imparfait-ils",
+      "52d47c91-b8fb-4421-aa30-a5ef6ecb89ed",
+      "8d285891-2819-4b7d-bbba-dc5639571ebe",
+      "5f3efc60-3bc0-4740-b6cc-27c45dd246f5",
+      "ae050479-daf4-4294-8185-6b974432344d",
+      "9543b167-77c8-4340-bf38-129e8088064a",
+      "8754f7d3-244d-40a2-a680-7d14feb1fad1"
+    ]
+  },
+  {
+    "id": "fr-avoir-present-je",
+    "kind": "conjugation",
+    "front": "avoir",
+    "back": "Présent\nj’ai\ntu as\nil/elle a\nnous avons\nvous avez\nils/elles ont\n\nImparfait\nj’avais\ntu avais\nil/elle avait\nnous avions\nvous aviez\nils/elles avaient\n\nPassé composé\nj’ai eu\ntu as eu\nil/elle a eu\nnous avons eu\nvous avez eu\nils/elles ont eu",
+    "previous_ids": [
+      "fr-avoir-present-tu",
+      "fr-avoir-present-il",
+      "fr-avoir-present-nous",
+      "fr-avoir-present-vous",
+      "fr-avoir-present-ils",
+      "fr-avoir-imparfait-je",
+      "fr-avoir-imparfait-tu",
+      "fr-avoir-imparfait-il",
+      "fr-avoir-imparfait-nous",
+      "fr-avoir-imparfait-vous",
+      "fr-avoir-imparfait-ils",
+      "55332653-e4e8-40c3-a231-75e34c653e2b",
+      "d47c5a14-9304-4f75-bf36-3eb663489335",
+      "9b3d2a8b-5eac-4057-aceb-57d8034df04f",
+      "ad9e2ac2-df3f-4a42-8250-d5e53e05977d",
+      "09ddc5ea-9481-458c-ab59-ac9b3202c6dc",
+      "1e80b2f7-476d-46d6-aa17-c5fa3df1988b"
+    ]
+  },
+  {
+    "id": "fr-aller-present-je",
+    "kind": "conjugation",
+    "front": "aller",
+    "back": "Présent\nje vais\ntu vas\nil/elle va\nnous allons\nvous allez\nils/elles vont\n\nImparfait\nj’allais\ntu allais\nil/elle allait\nnous allions\nvous alliez\nils/elles allaient\n\nPassé composé\nje suis allé / allée\ntu es allé / allée\nil est allé / elle est allée\nnous sommes allés / allées\nvous êtes allé / allée / allés / allées\nils sont allés / elles sont allées",
+    "previous_ids": [
+      "fr-aller-present-tu",
+      "fr-aller-present-il",
+      "fr-aller-present-nous",
+      "fr-aller-present-vous",
+      "fr-aller-present-ils",
+      "378e1b15-2a36-4f28-8ab2-c8fbb35c1e86",
+      "45cfde74-ab88-434b-9b88-756221688952",
+      "8e3d9b17-1324-47f6-a649-4337d1f2fd38",
+      "8a247671-6906-47c4-ae91-0675afb69f4f",
+      "72e06f74-562c-44c9-b12b-f9338dacad4d",
+      "71641485-404b-40a6-ba7a-74081921ed63",
+      "7534695c-d76b-4036-a06d-152550ddff06",
+      "488a5ca9-7ab6-4a58-a11c-5cd80ec8c6b9",
+      "3e770ba4-b88a-4ac2-a0b3-701d2f45f013",
+      "b2b81adb-3ea8-4419-ac73-76b7025315e5",
+      "e825eaa2-f4ab-4309-80a7-262dfc96bdd5",
+      "e43b9835-5091-41b1-9976-cad8e1ae3a0a"
+    ]
+  },
+  {
+    "id": "fr-faire-present-je",
+    "kind": "conjugation",
+    "front": "faire",
+    "back": "Présent\nje fais\ntu fais\nil/elle fait\nnous faisons\nvous faites\nils/elles font\n\nImparfait\nje faisais\ntu faisais\nil/elle faisait\nnous faisions\nvous faisiez\nils/elles faisaient\n\nPassé composé\nj’ai fait\ntu as fait\nil/elle a fait\nnous avons fait\nvous avez fait\nils/elles ont fait",
+    "previous_ids": [
+      "fr-faire-present-tu",
+      "fr-faire-present-il",
+      "fr-faire-present-nous",
+      "fr-faire-present-vous",
+      "fr-faire-present-ils",
+      "fr-faire-passe-compose-je",
+      "fr-faire-passe-compose-tu",
+      "fr-faire-passe-compose-il",
+      "fr-faire-passe-compose-nous",
+      "fr-faire-passe-compose-vous",
+      "fr-faire-passe-compose-ils",
+      "2c92891d-4abc-463d-9163-74fa928a2b84",
+      "82b074db-c3eb-4f38-b52a-b5dc4a5910c6",
+      "8ce10f27-9fc3-4222-8486-426b70149aef",
+      "e0709750-b086-4c6c-a9d6-b69cad80e514",
+      "ff5e35b6-a93e-44cd-9a20-86194675ef76",
+      "c314e66d-7086-40af-bcd5-2f8a3e90ef5b"
+    ]
+  },
+  {
+    "id": "fr-parler-present-je",
+    "kind": "conjugation",
+    "front": "parler",
+    "back": "Présent\nje parle\ntu parles\nil/elle parle\nnous parlons\nvous parlez\nils/elles parlent\n\nImparfait\nje parlais\ntu parlais\nil/elle parlait\nnous parlions\nvous parliez\nils/elles parlaient\n\nPassé composé\nj’ai parlé\ntu as parlé\nil/elle a parlé\nnous avons parlé\nvous avez parlé\nils/elles ont parlé",
+    "previous_ids": [
+      "fr-parler-present-tu",
+      "fr-parler-present-il",
+      "fr-parler-present-nous",
+      "fr-parler-present-vous",
+      "fr-parler-present-ils",
+      "a2c37b3e-d93c-41d5-b5bb-9aaa9865d108",
+      "99482e3e-589f-4f76-b522-174a441fb1f6",
+      "07e7f167-dd44-4cc8-8b55-dd5b3ab84623",
+      "9bb384dc-8a04-4b30-a9a7-0064539c3b23",
+      "804bd221-5464-4eb6-8f57-453ab737f9ec",
+      "c95366be-a071-4321-8f5b-5740e42ffd46",
+      "5a7caad0-fef6-411e-8007-eca480357b70",
+      "bc4a1b72-7d5a-473a-aa58-57bf4a6150d8",
+      "6620dca5-0d52-49bc-b9e1-22a2f0c908cf",
+      "96f140ea-cd46-4e27-a2ee-e8b20a748a04",
+      "48f20b16-98a1-461b-be3f-eac3c77b2977",
+      "7bfd657b-7df7-4b6b-8e53-81efbb6425db"
+    ]
+  },
+  {
+    "id": "fr-finir-present-je",
+    "kind": "conjugation",
+    "front": "finir",
+    "back": "Présent\nje finis\ntu finis\nil/elle finit\nnous finissons\nvous finissez\nils/elles finissent\n\nImparfait\nje finissais\ntu finissais\nil/elle finissait\nnous finissions\nvous finissiez\nils/elles finissaient\n\nPassé composé\nj’ai fini\ntu as fini\nil/elle a fini\nnous avons fini\nvous avez fini\nils/elles ont fini",
+    "previous_ids": [
+      "fr-finir-present-tu",
+      "fr-finir-present-il",
+      "fr-finir-present-nous",
+      "fr-finir-present-vous",
+      "fr-finir-present-ils",
+      "e9719e03-d556-44e6-9b5a-d49389fbbe1f",
+      "30ed86e6-f1c9-4988-b60d-07fd225d3180",
+      "57aa5775-7fa4-4b90-845f-25e2ac5747bb",
+      "958b30a3-1831-4bb3-a190-1574172d2282",
+      "6340cec0-f989-486c-b1e4-2385a3f3c68d",
+      "dc9c0ea4-fe76-452d-8507-17139a5b09ec",
+      "0bf8ab87-ac0a-4162-b60b-5527920af8bd",
+      "7a31c9be-c75a-42b3-9c04-e6d8f7eeaa6e",
+      "5cb88c00-e168-4730-96e3-6841c0b2a4cb",
+      "60eae355-7434-4a4b-9174-37dd13511507",
+      "26b8cb70-844a-4e27-831c-aebec1593bc2",
+      "9bf5e8c9-6035-49f4-b63e-bb91f73c5afc"
+    ]
+  },
+  {
+    "id": "fr-prendre-present-je",
+    "kind": "conjugation",
+    "front": "prendre",
+    "back": "Présent\nje prends\ntu prends\nil/elle prend\nnous prenons\nvous prenez\nils/elles prennent\n\nImparfait\nje prenais\ntu prenais\nil/elle prenait\nnous prenions\nvous preniez\nils/elles prenaient\n\nPassé composé\nj’ai pris\ntu as pris\nil/elle a pris\nnous avons pris\nvous avez pris\nils/elles ont pris",
+    "previous_ids": [
+      "fr-prendre-present-tu",
+      "fr-prendre-present-il",
+      "fr-prendre-present-nous",
+      "fr-prendre-present-vous",
+      "fr-prendre-present-ils",
+      "fr-prendre-passe-compose-je",
+      "fr-prendre-passe-compose-tu",
+      "fr-prendre-passe-compose-il",
+      "fr-prendre-passe-compose-nous",
+      "fr-prendre-passe-compose-vous",
+      "fr-prendre-passe-compose-ils",
+      "75a37a89-0753-41ab-bc4c-897bccae9c39",
+      "6ec1b3ce-fdf1-4b6d-b66d-c8a08930bebf",
+      "4a5ed8a6-5237-4813-92d7-04cce341d387",
+      "ca76f4f6-a671-4ce9-961f-d7e73d77933f",
+      "e3a990d6-eb19-43b4-8b2f-ce01c9f937aa",
+      "f2577f48-1c4d-4398-a3a6-8ecd4cb87f2b"
+    ]
+  },
+  {
+    "id": "fr-venir-present-je",
+    "kind": "conjugation",
+    "front": "venir",
+    "back": "Présent\nje viens\ntu viens\nil/elle vient\nnous venons\nvous venez\nils/elles viennent\n\nImparfait\nje venais\ntu venais\nil/elle venait\nnous venions\nvous veniez\nils/elles venaient\n\nPassé composé\nje suis venu / venue\ntu es venu / venue\nil est venu / elle est venue\nnous sommes venus / venues\nvous êtes venu / venue / venus / venues\nils sont venus / elles sont venues",
+    "previous_ids": [
+      "fr-venir-present-tu",
+      "fr-venir-present-il",
+      "fr-venir-present-nous",
+      "fr-venir-present-vous",
+      "fr-venir-present-ils",
+      "650d430c-448d-4c9a-91a4-56326ffb6bcb",
+      "04a773c1-9345-4207-8e38-450f39eaa3ae",
+      "12cd706d-68b3-4a8f-8f26-1197265bf914",
+      "2922ec54-d705-40a9-a528-20a134cf7a1e",
+      "5cde0347-bf12-4563-bff8-95c9108f1a5e",
+      "ecc25db5-61fc-4241-bed3-809e69093824",
+      "5b1a7a29-6dc5-4db2-a1d9-8cb9851fc662",
+      "e7d6aa1c-4222-49cb-bf02-1afedc1b5beb",
+      "14cdd8ce-560a-48d0-8122-ec82e7f16801",
+      "3e62e949-db39-44dd-a4d3-997e66d90748",
+      "5a67ae7a-b159-43ea-991c-97cf4c6f803d",
+      "0d5c7e28-2e16-4abe-89e0-24979dbebc8a"
+    ]
+  },
+  {
+    "id": "fr-pouvoir-present-je",
+    "kind": "conjugation",
+    "front": "pouvoir",
+    "back": "Présent\nje peux\ntu peux\nil/elle peut\nnous pouvons\nvous pouvez\nils/elles peuvent\n\nImparfait\nje pouvais\ntu pouvais\nil/elle pouvait\nnous pouvions\nvous pouviez\nils/elles pouvaient\n\nPassé composé\nj’ai pu\ntu as pu\nil/elle a pu\nnous avons pu\nvous avez pu\nils/elles ont pu",
+    "previous_ids": [
+      "fr-pouvoir-present-tu",
+      "fr-pouvoir-present-il",
+      "fr-pouvoir-present-nous",
+      "fr-pouvoir-present-vous",
+      "fr-pouvoir-present-ils",
+      "116ed049-de3e-439b-8fd2-2bebd3dd00b5",
+      "ca656ab9-1229-46a2-a773-5503885e70fe",
+      "6f829dac-0267-4fcc-9f65-0547ea528366",
+      "7293c455-1b13-4069-94d4-8b863b430e32",
+      "83bdd6f9-e404-4bad-89c7-93c7638d8fdf",
+      "379fc5b8-a2ba-46a0-b734-2fdee29aa5c4",
+      "7e91bc66-19e4-419f-86c8-c7e41f5490fe",
+      "25b4f756-eeec-4513-a5fb-e14795f5bff1",
+      "f87b083d-dbfe-4183-b7e6-67f32996e4fe",
+      "68cd2655-0bca-4fea-91cc-85d87331c190",
+      "80295098-9de2-47bb-929c-b5fe47b43b32",
+      "db8e40a0-d19b-4c82-aba7-353a00fe8c45"
+    ]
+  },
+  {
+    "id": "fr-vouloir-present-je",
+    "kind": "conjugation",
+    "front": "vouloir",
+    "back": "Présent\nje veux\ntu veux\nil/elle veut\nnous voulons\nvous voulez\nils/elles veulent\n\nImparfait\nje voulais\ntu voulais\nil/elle voulait\nnous voulions\nvous vouliez\nils/elles voulaient\n\nPassé composé\nj’ai voulu\ntu as voulu\nil/elle a voulu\nnous avons voulu\nvous avez voulu\nils/elles ont voulu",
+    "previous_ids": [
+      "fr-vouloir-present-tu",
+      "fr-vouloir-present-il",
+      "fr-vouloir-present-nous",
+      "fr-vouloir-present-vous",
+      "fr-vouloir-present-ils",
+      "eea45789-b16c-4c76-9b0b-d5adfb5ce2ca",
+      "51184503-a117-4961-b08f-ada20fe70d21",
+      "646a60bf-066d-45a1-bb5e-6c8af96e27dd",
+      "49d34a70-2715-46bf-964f-d22d0cb9579e",
+      "e610e76f-79f3-4186-89bb-bcef709cda62",
+      "0250566f-8077-4960-8747-8188eb9c44ec",
+      "016ecff5-d2e1-4822-be4e-ffad2e210a08",
+      "31c4040c-940e-455f-abc0-6e78b5e1c36a",
+      "be972992-75cb-4cca-80eb-e24988e3e814",
+      "206e47bf-a2c2-434e-8d70-83c3ac7fc91e",
+      "4e426599-182c-46d1-af06-bade7304e812",
+      "a3498758-20fc-4914-9333-9626ce102928"
+    ]
+  },
+  {
+    "id": "60523d5a-842c-4159-bc57-e57de8abd845",
+    "kind": "conjugation",
+    "front": "répondre",
+    "back": "Présent\nje réponds\ntu réponds\nil/elle répond\nnous répondons\nvous répondez\nils/elles répondent\n\nImparfait\nje répondais\ntu répondais\nil/elle répondait\nnous répondions\nvous répondiez\nils/elles répondaient\n\nPassé composé\nj’ai répondu\ntu as répondu\nil/elle a répondu\nnous avons répondu\nvous avez répondu\nils/elles ont répondu",
+    "previous_ids": [
+      "bff36d20-de95-4bb5-a6ae-c9b2d0cdce68",
+      "9dd3e65e-0c2f-4398-8e05-0266c4660286",
+      "b5f581f4-e2d1-41e6-bf4b-357612c2c6ed",
+      "19d301f1-260f-4aa5-bb22-1b0d0c3189e9",
+      "68811dff-89a9-4c4c-89a2-d11ee661e016",
+      "035811b6-1338-44f6-9a81-b2c7d0c62a1b",
+      "45d47903-4020-412a-9a92-822e71ff5cab",
+      "2f2b2194-d982-498f-912e-3e67628c0ffb",
+      "3f78da06-9e7d-4ae1-9a39-8a5d2d42ccd2",
+      "8a489557-056c-451b-88d4-ae43087db37e",
+      "74155f2e-69dc-4ec8-9cdc-6d3e7fe5a651",
+      "0d964d8d-252e-4171-a425-ef8d3b7b6200",
+      "450f6c4c-4164-4676-bd86-34ac0051ed03",
+      "17c4012b-1063-4db6-b59e-52abb368b196",
+      "1432e1e3-7741-4f1a-b740-be0da99f2acd",
+      "e91f4a9f-2c7e-4941-bc6e-5ddf6f780e07",
+      "daee0e25-52b1-4eab-ab26-afd7bf96a424"
+    ]
+  },
+  {
+    "id": "fr-number-000",
+    "kind": "number",
+    "front": "0",
+    "back": "zéro"
+  },
+  {
+    "id": "fr-number-001",
+    "kind": "number",
+    "front": "1",
+    "back": "un"
+  },
+  {
+    "id": "fr-number-002",
+    "kind": "number",
+    "front": "2",
+    "back": "deux"
+  },
+  {
+    "id": "fr-number-003",
+    "kind": "number",
+    "front": "3",
+    "back": "trois"
+  },
+  {
+    "id": "fr-number-004",
+    "kind": "number",
+    "front": "4",
+    "back": "quatre"
+  },
+  {
+    "id": "fr-number-005",
+    "kind": "number",
+    "front": "5",
+    "back": "cinq"
+  },
+  {
+    "id": "fr-number-006",
+    "kind": "number",
+    "front": "6",
+    "back": "six"
+  },
+  {
+    "id": "fr-number-007",
+    "kind": "number",
+    "front": "7",
+    "back": "sept"
+  },
+  {
+    "id": "fr-number-008",
+    "kind": "number",
+    "front": "8",
+    "back": "huit"
+  },
+  {
+    "id": "fr-number-009",
+    "kind": "number",
+    "front": "9",
+    "back": "neuf"
+  },
+  {
+    "id": "fr-number-010",
+    "kind": "number",
+    "front": "10",
+    "back": "dix"
+  },
+  {
+    "id": "fr-number-011",
+    "kind": "number",
+    "front": "11",
+    "back": "onze"
+  },
+  {
+    "id": "fr-number-012",
+    "kind": "number",
+    "front": "12",
+    "back": "douze"
+  },
+  {
+    "id": "fr-number-013",
+    "kind": "number",
+    "front": "13",
+    "back": "treize"
+  },
+  {
+    "id": "fr-number-014",
+    "kind": "number",
+    "front": "14",
+    "back": "quatorze"
+  },
+  {
+    "id": "fr-number-015",
+    "kind": "number",
+    "front": "15",
+    "back": "quinze"
+  },
+  {
+    "id": "fr-number-016",
+    "kind": "number",
+    "front": "16",
+    "back": "seize"
+  },
+  {
+    "id": "fr-number-017",
+    "kind": "number",
+    "front": "17",
+    "back": "dix-sept"
+  },
+  {
+    "id": "fr-number-018",
+    "kind": "number",
+    "front": "18",
+    "back": "dix-huit"
+  },
+  {
+    "id": "fr-number-019",
+    "kind": "number",
+    "front": "19",
+    "back": "dix-neuf"
+  },
+  {
+    "id": "fr-number-020",
+    "kind": "number",
+    "front": "20",
+    "back": "vingt"
+  },
+  {
+    "id": "fr-number-021",
+    "kind": "number",
+    "front": "21",
+    "back": "vingt et un"
+  },
+  {
+    "id": "fr-number-022",
+    "kind": "number",
+    "front": "22",
+    "back": "vingt-deux"
+  },
+  {
+    "id": "fr-number-023",
+    "kind": "number",
+    "front": "23",
+    "back": "vingt-trois"
+  },
+  {
+    "id": "fr-number-024",
+    "kind": "number",
+    "front": "24",
+    "back": "vingt-quatre"
+  },
+  {
+    "id": "fr-number-025",
+    "kind": "number",
+    "front": "25",
+    "back": "vingt-cinq"
+  },
+  {
+    "id": "fr-number-026",
+    "kind": "number",
+    "front": "26",
+    "back": "vingt-six"
+  },
+  {
+    "id": "fr-number-027",
+    "kind": "number",
+    "front": "27",
+    "back": "vingt-sept"
+  },
+  {
+    "id": "fr-number-028",
+    "kind": "number",
+    "front": "28",
+    "back": "vingt-huit"
+  },
+  {
+    "id": "fr-number-029",
+    "kind": "number",
+    "front": "29",
+    "back": "vingt-neuf"
+  },
+  {
+    "id": "fr-number-030",
+    "kind": "number",
+    "front": "30",
+    "back": "trente"
+  },
+  {
+    "id": "fr-number-031",
+    "kind": "number",
+    "front": "31",
+    "back": "trente et un"
+  },
+  {
+    "id": "fr-number-032",
+    "kind": "number",
+    "front": "32",
+    "back": "trente-deux"
+  },
+  {
+    "id": "fr-number-033",
+    "kind": "number",
+    "front": "33",
+    "back": "trente-trois"
+  },
+  {
+    "id": "fr-number-034",
+    "kind": "number",
+    "front": "34",
+    "back": "trente-quatre"
+  },
+  {
+    "id": "fr-number-035",
+    "kind": "number",
+    "front": "35",
+    "back": "trente-cinq"
+  },
+  {
+    "id": "fr-number-036",
+    "kind": "number",
+    "front": "36",
+    "back": "trente-six"
+  },
+  {
+    "id": "fr-number-037",
+    "kind": "number",
+    "front": "37",
+    "back": "trente-sept"
+  },
+  {
+    "id": "fr-number-038",
+    "kind": "number",
+    "front": "38",
+    "back": "trente-huit"
+  },
+  {
+    "id": "fr-number-039",
+    "kind": "number",
+    "front": "39",
+    "back": "trente-neuf"
+  },
+  {
+    "id": "fr-number-040",
+    "kind": "number",
+    "front": "40",
+    "back": "quarante"
+  },
+  {
+    "id": "fr-number-041",
+    "kind": "number",
+    "front": "41",
+    "back": "quarante et un"
+  },
+  {
+    "id": "fr-number-042",
+    "kind": "number",
+    "front": "42",
+    "back": "quarante-deux"
+  },
+  {
+    "id": "fr-number-043",
+    "kind": "number",
+    "front": "43",
+    "back": "quarante-trois"
+  },
+  {
+    "id": "fr-number-044",
+    "kind": "number",
+    "front": "44",
+    "back": "quarante-quatre"
+  },
+  {
+    "id": "fr-number-045",
+    "kind": "number",
+    "front": "45",
+    "back": "quarante-cinq"
+  },
+  {
+    "id": "fr-number-046",
+    "kind": "number",
+    "front": "46",
+    "back": "quarante-six"
+  },
+  {
+    "id": "fr-number-047",
+    "kind": "number",
+    "front": "47",
+    "back": "quarante-sept"
+  },
+  {
+    "id": "fr-number-048",
+    "kind": "number",
+    "front": "48",
+    "back": "quarante-huit"
+  },
+  {
+    "id": "fr-number-049",
+    "kind": "number",
+    "front": "49",
+    "back": "quarante-neuf"
+  },
+  {
+    "id": "fr-number-050",
+    "kind": "number",
+    "front": "50",
+    "back": "cinquante"
+  },
+  {
+    "id": "fr-number-051",
+    "kind": "number",
+    "front": "51",
+    "back": "cinquante et un"
+  },
+  {
+    "id": "fr-number-052",
+    "kind": "number",
+    "front": "52",
+    "back": "cinquante-deux"
+  },
+  {
+    "id": "fr-number-053",
+    "kind": "number",
+    "front": "53",
+    "back": "cinquante-trois"
+  },
+  {
+    "id": "fr-number-054",
+    "kind": "number",
+    "front": "54",
+    "back": "cinquante-quatre"
+  },
+  {
+    "id": "fr-number-055",
+    "kind": "number",
+    "front": "55",
+    "back": "cinquante-cinq"
+  },
+  {
+    "id": "fr-number-056",
+    "kind": "number",
+    "front": "56",
+    "back": "cinquante-six"
+  },
+  {
+    "id": "fr-number-057",
+    "kind": "number",
+    "front": "57",
+    "back": "cinquante-sept"
+  },
+  {
+    "id": "fr-number-058",
+    "kind": "number",
+    "front": "58",
+    "back": "cinquante-huit"
+  },
+  {
+    "id": "fr-number-059",
+    "kind": "number",
+    "front": "59",
+    "back": "cinquante-neuf"
+  },
+  {
+    "id": "fr-number-060",
+    "kind": "number",
+    "front": "60",
+    "back": "soixante"
+  },
+  {
+    "id": "fr-number-061",
+    "kind": "number",
+    "front": "61",
+    "back": "soixante et un"
+  },
+  {
+    "id": "fr-number-062",
+    "kind": "number",
+    "front": "62",
+    "back": "soixante-deux"
+  },
+  {
+    "id": "fr-number-063",
+    "kind": "number",
+    "front": "63",
+    "back": "soixante-trois"
+  },
+  {
+    "id": "fr-number-064",
+    "kind": "number",
+    "front": "64",
+    "back": "soixante-quatre"
+  },
+  {
+    "id": "fr-number-065",
+    "kind": "number",
+    "front": "65",
+    "back": "soixante-cinq"
+  },
+  {
+    "id": "fr-number-066",
+    "kind": "number",
+    "front": "66",
+    "back": "soixante-six"
+  },
+  {
+    "id": "fr-number-067",
+    "kind": "number",
+    "front": "67",
+    "back": "soixante-sept"
+  },
+  {
+    "id": "fr-number-068",
+    "kind": "number",
+    "front": "68",
+    "back": "soixante-huit"
+  },
+  {
+    "id": "fr-number-069",
+    "kind": "number",
+    "front": "69",
+    "back": "soixante-neuf"
+  },
+  {
+    "id": "fr-number-070",
+    "kind": "number",
+    "front": "70",
+    "back": "soixante-dix"
+  },
+  {
+    "id": "fr-number-071",
+    "kind": "number",
+    "front": "71",
+    "back": "soixante et onze"
+  },
+  {
+    "id": "fr-number-072",
+    "kind": "number",
+    "front": "72",
+    "back": "soixante-douze"
+  },
+  {
+    "id": "fr-number-073",
+    "kind": "number",
+    "front": "73",
+    "back": "soixante-treize"
+  },
+  {
+    "id": "fr-number-074",
+    "kind": "number",
+    "front": "74",
+    "back": "soixante-quatorze"
+  },
+  {
+    "id": "fr-number-075",
+    "kind": "number",
+    "front": "75",
+    "back": "soixante-quinze"
+  },
+  {
+    "id": "fr-number-076",
+    "kind": "number",
+    "front": "76",
+    "back": "soixante-seize"
+  },
+  {
+    "id": "fr-number-077",
+    "kind": "number",
+    "front": "77",
+    "back": "soixante-dix-sept"
+  },
+  {
+    "id": "fr-number-078",
+    "kind": "number",
+    "front": "78",
+    "back": "soixante-dix-huit"
+  },
+  {
+    "id": "fr-number-079",
+    "kind": "number",
+    "front": "79",
+    "back": "soixante-dix-neuf"
+  },
+  {
+    "id": "fr-number-080",
+    "kind": "number",
+    "front": "80",
+    "back": "quatre-vingts"
+  },
+  {
+    "id": "fr-number-081",
+    "kind": "number",
+    "front": "81",
+    "back": "quatre-vingt-un"
+  },
+  {
+    "id": "fr-number-082",
+    "kind": "number",
+    "front": "82",
+    "back": "quatre-vingt-deux"
+  },
+  {
+    "id": "fr-number-083",
+    "kind": "number",
+    "front": "83",
+    "back": "quatre-vingt-trois"
+  },
+  {
+    "id": "fr-number-084",
+    "kind": "number",
+    "front": "84",
+    "back": "quatre-vingt-quatre"
+  },
+  {
+    "id": "fr-number-085",
+    "kind": "number",
+    "front": "85",
+    "back": "quatre-vingt-cinq"
+  },
+  {
+    "id": "fr-number-086",
+    "kind": "number",
+    "front": "86",
+    "back": "quatre-vingt-six"
+  },
+  {
+    "id": "fr-number-087",
+    "kind": "number",
+    "front": "87",
+    "back": "quatre-vingt-sept"
+  },
+  {
+    "id": "fr-number-088",
+    "kind": "number",
+    "front": "88",
+    "back": "quatre-vingt-huit"
+  },
+  {
+    "id": "fr-number-089",
+    "kind": "number",
+    "front": "89",
+    "back": "quatre-vingt-neuf"
+  },
+  {
+    "id": "fr-number-090",
+    "kind": "number",
+    "front": "90",
+    "back": "quatre-vingt-dix"
+  },
+  {
+    "id": "fr-number-091",
+    "kind": "number",
+    "front": "91",
+    "back": "quatre-vingt-onze"
+  },
+  {
+    "id": "fr-number-092",
+    "kind": "number",
+    "front": "92",
+    "back": "quatre-vingt-douze"
+  },
+  {
+    "id": "fr-number-093",
+    "kind": "number",
+    "front": "93",
+    "back": "quatre-vingt-treize"
+  },
+  {
+    "id": "fr-number-094",
+    "kind": "number",
+    "front": "94",
+    "back": "quatre-vingt-quatorze"
+  },
+  {
+    "id": "fr-number-095",
+    "kind": "number",
+    "front": "95",
+    "back": "quatre-vingt-quinze"
+  },
+  {
+    "id": "fr-number-096",
+    "kind": "number",
+    "front": "96",
+    "back": "quatre-vingt-seize"
+  },
+  {
+    "id": "fr-number-097",
+    "kind": "number",
+    "front": "97",
+    "back": "quatre-vingt-dix-sept"
+  },
+  {
+    "id": "fr-number-098",
+    "kind": "number",
+    "front": "98",
+    "back": "quatre-vingt-dix-huit"
+  },
+  {
+    "id": "fr-number-099",
+    "kind": "number",
+    "front": "99",
+    "back": "quatre-vingt-dix-neuf"
+  },
+  {
+    "id": "fr-number-100",
+    "kind": "number",
+    "front": "100",
+    "back": "cent"
+  }
+]

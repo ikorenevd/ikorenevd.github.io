@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru" class="read-only"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Хранилище: расписание, задачи и медиатека."><title>Хранилище</title>
+<meta name="description" content="Хранилище: расписание, задачи, медиатека и французский."><title>Хранилище</title>
 <meta name="theme-color" content="#f7f8fa">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9,9 +9,11 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png?v=3">
 <script src="pwa.js?v=1" defer></script>
-<link rel="icon" type="image/png" href="icons/icon-192.png?v=3"><link rel="stylesheet" href="styles.css?v=calendar-2"><link rel="stylesheet" href="calendar.css?v=overdue-1"><script src="app.js?v=readonly-1" defer></script><script src="calendar.js?v=overdue-1" defer></script></head>
+<link rel="icon" type="image/png" href="icons/icon-192.png?v=3"><link rel="stylesheet" href="styles.css?v=calendar-2"><link rel="stylesheet" href="calendar.css?v=overdue-1"><script src="app.js?v=french-2" defer></script><script src="calendar.js?v=overdue-1" defer></script>
+<link rel="stylesheet" href="french.css?v=4"><script src="french.js?v=4" defer></script>
+</head>
 <body><main>
-<nav class="app-nav" aria-label="Разделы"><button class="active" data-view="shelf">Полка</button><button data-view="calendar">Календарь</button><button data-view="tasks">Задачи</button></nav>
+<nav class="app-nav" aria-label="Разделы"><button class="active" data-view="shelf">Полка</button><button data-view="calendar">Календарь</button><button data-view="tasks">Задачи</button><button data-view="french">Французский</button></nav>
 <section id="shelf-view" class="view"><div class="view-head"><div><h1>Полка</h1><p>Фильмы, сериалы и книги</p></div><button class="primary" id="add-media">Добавить</button></div>
 <nav class="media-nav" id="type-filters"><button class="active" data-type="all">Все <span id="count-all">0</span></button><button data-type="movie">Фильмы <span id="count-movie">0</span></button><button data-type="series">Сериалы <span id="count-series">0</span></button><button data-type="book">Книги <span id="count-book">0</span></button></nav>
 <section class="stats"><div><strong id="stat-total">0</strong><span>в коллекции</span></div><div><strong id="stat-finished">0</strong><span id="stat-finished-label">просмотрено и прочитано</span></div><div><strong class="accent" id="stat-waiting">0</strong><span>в ожидании</span></div></section>
@@ -21,6 +23,443 @@
 <section class="overdue-tasks" id="overdue-tasks" aria-labelledby="overdue-heading" hidden><h2 id="overdue-heading">Просроченные задачи</h2><ul id="overdue-list"></ul></section>
 <div class="calendar-controls"><button id="prev-month">←</button><h2 id="month-title"></h2><button id="next-month">→</button><button class="text-button" id="today">Сегодня</button></div><div class="calendar-grid weekdays"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div><div class="calendar-grid" id="calendar-grid"></div></section>
 <section id="tasks-view" class="view" hidden><div class="view-head"><div><h1>Задачи</h1><p>Текущие дела и сроки</p></div><button class="primary" id="add-task">Добавить задачу</button></div><div class="filters" id="task-filters"><button class="active" data-task-status="all">Все</button><button data-task-status="todo">В работе</button><button data-task-status="done">Выполнено</button></div><div class="task-list" id="task-list"></div><div class="empty" id="tasks-empty" hidden>Задач пока нет.</div></section>
+<section id="french-view" class="view" hidden>
+  <div class="view-head">
+    <div><h1>Французский</h1><p>Карточки и грамматика</p></div>
+  </div>
+  <nav class="media-nav" aria-label="Французский">
+    <button type="button" class="active" data-french-panel="study" aria-pressed="true">Повторение</button>
+    <button type="button" data-french-panel="deck" aria-pressed="false">Карточки</button>
+    <button type="button" data-french-panel="guide" aria-pressed="false" aria-controls="french-guide">Справочник</button>
+  </nav>
+  <div id="french-filters" class="filters french-filters" role="group" aria-label="Тип карточек">
+    <button type="button" class="active" data-french-kind="all" aria-pressed="true">Все</button>
+    <button type="button" data-french-kind="word" aria-pressed="false">Слова</button>
+    <button type="button" data-french-kind="conjugation" aria-pressed="false">Спряжения</button>
+    <button type="button" data-french-kind="number" aria-pressed="false">Числа</button>
+  </div>
+  <div id="french-loading">
+    <p id="french-load-status" role="status">Загрузка карточек…</p>
+    <button type="button" id="french-retry" hidden>Повторить загрузку</button>
+  </div>
+  <div id="french-study" hidden>
+    <div class="stats french-stats">
+      <div><strong id="french-new">0</strong><span>новых</span></div>
+      <div><strong id="french-due" class="accent">0</strong><span>к повторению</span></div>
+      <div><strong id="french-total">0</strong><span>всего</span></div>
+    </div>
+    <div class="french-card">
+      <div id="french-start-screen">
+        <p id="french-session-status" role="status"></p>
+        <button type="button" class="primary" id="french-start">Начать занятие</button>
+      </div>
+      <div id="french-question" hidden>
+        <p class="french-card-kind" id="french-card-kind"></p>
+        <h2 id="french-front" lang="fr" tabindex="-1"></h2>
+        <div id="french-solution" hidden>
+          <p id="french-back" tabindex="-1"></p>
+          <p id="french-translation" hidden></p>
+          <p id="french-example" lang="fr"></p>
+        </div>
+        <button type="button" class="primary" id="french-reveal">Показать ответ</button>
+        <div id="french-ratings" class="french-ratings" role="group" aria-label="Оценка ответа" hidden>
+          <button type="button" data-french-rating="again">Снова <small></small></button>
+          <button type="button" data-french-rating="hard">Трудно <small></small></button>
+          <button type="button" data-french-rating="good">Хорошо <small></small></button>
+          <button type="button" data-french-rating="easy">Легко <small></small></button>
+        </div>
+        <p id="french-progress-error" class="form-error" role="alert" hidden></p>
+        <button type="button" class="text-button" id="french-finish">Закончить занятие</button>
+      </div>
+    </div>
+  </div>
+  <div id="french-deck" hidden>
+    <div class="toolbar">
+      <input type="search" id="french-search" placeholder="Слово, форма или перевод" aria-label="Поиск по карточкам">
+      <button type="button" class="primary french-local-edit" id="french-add">Добавить карточку</button>
+    </div>
+    <p id="french-deck-count" class="meta" role="status"></p>
+    <ul id="french-list"></ul>
+  </div>
+  <section id="french-guide" aria-labelledby="french-guide-title" hidden>
+    <h2 id="french-guide-title">Справочник по грамматике</h2>
+    <p class="french-guide-intro">Правила, разговорные образцы и упражнения по урокам «Начального курса французского языка». Номера страниц соответствуют печатному изданию.</p>
+    <nav class="french-guide-nav" aria-label="Разделы справочника">
+      <a href="#french-guide-intro">Вводный курс</a>
+      <a href="#french-guide-main">Основной курс</a>
+      <a href="#french-guide-extra">Дополнения</a>
+    </nav>
+
+    <section class="french-guide-group" id="french-guide-intro" aria-labelledby="french-guide-intro-title">
+      <h3 id="french-guide-intro-title">Вводный курс</h3>
+      <details open>
+        <summary>Урок 1. Порядок слов и интонация</summary>
+        <p class="french-guide-ref">С. 11–14</p>
+        <p><strong>Правило.</strong> В нейтральном повествовательном предложении подлежащее предшествует сказуемому. Прямое дополнение, выраженное существительным, обычно стоит после глагола. Подлежащее обычно выражено, даже если по-русски его можно опустить.</p>
+        <p class="french-pattern">Подлежащее + глагол + дополнение → <span lang="fr">Nina lit un roman.</span></p>
+        <p><strong>Вопрос.</strong> Сохрани порядок слов и подними голос к концу короткой фразы. Вопросительное слово помогает уточнить, какой информации не хватает. Сравни <span lang="fr">Tu travailles ici ?</span> («Ты здесь работаешь?») и <span lang="fr">Où travailles-tu ?</span> («Где ты работаешь?»).</p>
+        <p class="french-guide-example"><span lang="fr">— Tu lis un roman ?<br>— Oui, je lis un roman.</span><br>— Ты читаешь роман?<br>— Да, я читаю роман.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Составь утверждение и вопрос к собеседнику из слов <span lang="fr">tu, le français, étudies</span>.</p>
+          <details><summary>Ответ</summary><p lang="fr">Tu étudies le français. → Tu étudies le français ?</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Урок 2. Определённый и неопределённый артикли</summary>
+        <p class="french-guide-ref">С. 18–22</p>
+        <p><strong>Употребление.</strong> Неопределённый артикль вводит предмет, который собеседнику ещё не нужно отличать от других. Определённый артикль указывает на известный или понятный из ситуации предмет. Он также употребляется, когда говорят о предмете или понятии в общем смысле.</p>
+        <table class="french-guide-table">
+          <thead><tr><th scope="col">Артикль</th><th scope="col">М. р.</th><th scope="col">Ж. р.</th><th scope="col">Мн. ч.</th></tr></thead>
+          <tbody><tr><th scope="row">Неопред.</th><td lang="fr">un</td><td lang="fr">une</td><td lang="fr">des</td></tr><tr><th scope="row">Опред.</th><td lang="fr">le / l’</td><td lang="fr">la / l’</td><td lang="fr">les</td></tr></tbody>
+        </table>
+        <p>Перед гласной или немым <span lang="fr">h</span> формы <span lang="fr">le, la</span> сокращаются до <span lang="fr">l’</span>, как в <span lang="fr">l’école</span>.</p>
+        <p class="french-guide-example"><span lang="fr">Il y a une lampe près du lit. La lampe est allumée.</span><br>У кровати есть лампа. Лампа горит.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p lang="fr">J’achète … cahier. … cahier est bleu.</p>
+          <details><summary>Ответ</summary><p lang="fr">J’achète un cahier. Le cahier est bleu.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Урок 3. Présent глаголов I группы</summary>
+        <p class="french-guide-ref">С. 27–31, 38</p>
+        <p><strong>Образование.</strong> У глаголов I группы убери <span lang="fr">-er</span> и прибавь личное окончание. Глагол <span lang="fr">aller</span> имеет особое спряжение и относится к III группе.</p>
+        <table class="french-guide-table">
+          <thead><tr><th scope="col">Лицо</th><th scope="col">Ед. ч.</th><th scope="col">Мн. ч.</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1-е</th><td lang="fr">je parl<strong>e</strong></td><td lang="fr">nous parl<strong>ons</strong></td></tr>
+            <tr><th scope="row">2-е</th><td lang="fr">tu parl<strong>es</strong></td><td lang="fr">vous parl<strong>ez</strong></td></tr>
+            <tr><th scope="row">3-е</th><td lang="fr">il parl<strong>e</strong></td><td lang="fr">ils parl<strong>ent</strong></td></tr>
+          </tbody>
+        </table>
+        <p><strong>Употребление.</strong> Présent выражает действие в момент речи, привычку или общий факт. Сравни формы <span lang="fr">nous mangeons</span> и <span lang="fr">nous commençons</span>. Буква <span lang="fr">e</span> после <span lang="fr">g</span> и седиль под <span lang="fr">c</span> сохраняют произношение основы перед <span lang="fr">-ons</span>.</p>
+        <p class="french-guide-example"><span lang="fr">— Vous travaillez le samedi ?<br>— Oui, nous travaillons le matin.</span><br>— Вы работаете по субботам?<br>— Да, мы работаем по утрам.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Замени <span lang="fr">je</span> на <span lang="fr">nous</span> в предложении <span lang="fr">Je commence à neuf heures.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Nous commençons à neuf heures.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Урок 4. Отрицание и согласование прилагательных</summary>
+        <p class="french-guide-ref">С. 35–36, 39–41</p>
+        <p><strong>Отрицательная форма.</strong> В простом времени <span lang="fr">ne</span> ставится перед глаголом, а <span lang="fr">pas</span> после него. Перед гласной или немым <span lang="fr">h</span> употребляется <span lang="fr">n’</span>. Если перед глаголом есть безударное местоимение, <span lang="fr">ne</span> ставится перед ним.</p>
+        <p class="french-guide-example"><span lang="fr">Je n’habite pas ici. Je ne le connais pas.</span><br>Я здесь не живу. Я его не знаю.</p>
+        <p><strong>Согласование.</strong> Прилагательное принимает род и число существительного. Частая модель: добавить <span lang="fr">-e</span> для женского рода и <span lang="fr">-s</span> для множественного числа. Есть особые формы, например <span lang="fr">blanc → blanche</span>.</p>
+        <p class="french-guide-example"><span lang="fr">un sac noir → une veste noire → des vestes noires</span><br>чёрная сумка → чёрная куртка → чёрные куртки</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Поставь <span lang="fr">Elle aime les films courts.</span> в отрицательную форму. Затем замени <span lang="fr">films</span> на <span lang="fr">histoires</span>.</p>
+          <details><summary>Ответ</summary><p lang="fr">Elle n’aime pas les films courts. → Elle n’aime pas les histoires courtes.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Урок 5. Повелительное наклонение и именная часть сказуемого</summary>
+        <p class="french-guide-ref">С. 49–52</p>
+        <p><strong>Impératif.</strong> Для просьбы, команды и совета употребляются формы <span lang="fr">tu, nous, vous</span> без подлежащего. У глаголов I группы форма для <span lang="fr">tu</span> обычно теряет конечное <span lang="fr">-s</span>.</p>
+        <p class="french-guide-example"><span lang="fr">Ferme la porte. Fermons la porte. Fermez la porte.</span><br>Закрой дверь. Давайте закроем дверь. Закройте дверь.</p>
+        <p><strong>Профессия.</strong> После <span lang="fr">être</span> название профессии без уточнения обычно употребляется без артикля. В конструкции <span lang="fr">c’est</span> с существительным появляется определитель.</p>
+        <p class="french-guide-example"><span lang="fr">Elle est médecin. C’est une excellente médecin.</span><br>Она врач. Она отличный врач.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Преврати <span lang="fr">Vous ouvrez la fenêtre.</span> в просьбу. Затем попроси не открывать окно.</p>
+          <details><summary>Ответ</summary><p lang="fr">Ouvrez la fenêtre. → N’ouvrez pas la fenêtre.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Урок 6. Futur immédiat, il y a, on и указательные формы</summary>
+        <p class="french-guide-ref">С. 58–62</p>
+        <p><strong>Образование.</strong> Для ближайшего будущего и намерения используется <span lang="fr">aller</span> в présent с инфинитивом. Эту конструкцию также называют <span lang="fr">futur proche</span>. С <span lang="fr">on</span> глагол ставится в 3-м лице единственного числа, в том числе когда <span lang="fr">on</span> означает «мы».</p>
+        <p class="french-guide-example"><span lang="fr">On va visiter ce musée demain.</span><br>Мы собираемся посетить этот музей завтра.</p>
+        <p><strong>Указательные формы.</strong> <span lang="fr">Ce</span> ставится перед существительным мужского рода, <span lang="fr">cet</span> — перед мужским родом с начальной гласной или немым <span lang="fr">h</span>, <span lang="fr">cette</span> — перед женским родом, <span lang="fr">ces</span> — во множественном числе.</p>
+        <p><strong>Il y a.</strong> Эта конструкция сообщает о наличии чего-либо. При обычном отрицании неопределённый артикль уступает место <span lang="fr">de / d’</span>.</p>
+        <p class="french-guide-example"><span lang="fr">Il y a un jardin derrière cet hôtel. Il n’y a pas de parking.</span><br>За этой гостиницей есть сад. Парковки нет.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Вырази намерение с <span lang="fr">aller</span>: <span lang="fr">Nous écrivons à Léa.</span> Затем поставь предложение в отрицательную форму.</p>
+          <details><summary>Ответ</summary><p lang="fr">Nous allons écrire à Léa. → Nous n’allons pas écrire à Léa.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Урок 7. Глаголы II группы, притяжательные формы и количество</summary>
+        <p class="french-guide-ref">С. 70–76, 82</p>
+        <p><strong>Présent.</strong> Глаголы II группы образуют множественное число с <span lang="fr">-iss-</span>: <span lang="fr">je finis, tu finis, il finit, nous finissons, vous finissez, ils finissent</span>. Окончание <span lang="fr">-ir</span> само по себе не определяет группу. Сравни <span lang="fr">nous partons</span>.</p>
+        <p><strong>Определители.</strong> В сочетаниях <span lang="fr">mon livre, ma lettre, mes lettres</span> выбор формы зависит от рода и числа предмета. Перед гласной и немым <span lang="fr">h</span> используется <span lang="fr">mon, ton, son</span> даже в женском роде, например <span lang="fr">mon amie</span>.</p>
+        <p><strong>Предлоги.</strong> <span lang="fr">À + le / les → au / aux</span>, <span lang="fr">de + le / les → du / des</span>. С <span lang="fr">la, l’</span> предлоги не сливаются. После выражений количества, например <span lang="fr">beaucoup</span> или <span lang="fr">un kilo</span>, обычно ставится <span lang="fr">de</span> перед названием того, что считают или измеряют.</p>
+        <p class="french-guide-example"><span lang="fr">Je vais au marché. J’achète un kilo de pommes pour ma sœur.</span><br>Я иду на рынок. Я покупаю килограмм яблок для сестры.</p>
+        <p><strong>Порядок.</strong> Сравни количественное <span lang="fr">trois</span> («три») и порядковое <span lang="fr">troisième</span> («третий»). У первого числа особая форма <span lang="fr">premier / première</span>.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Подставь <span lang="fr">le stade</span> и <span lang="fr">la gare</span> в две фразы: <span lang="fr">Je vais à … Je reviens de …</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Je vais au stade. Je reviens du stade.<br>Je vais à la gare. Je reviens de la gare.</p></details>
+        </details>
+      </details>
+    </section>
+
+    <section class="french-guide-group" id="french-guide-main" aria-labelledby="french-guide-main-title">
+      <h3 id="french-guide-main-title">Основной курс</h3>
+      <details>
+        <summary>Leçon 1. Возвратные глаголы, местоимения и вопрос</summary>
+        <p class="french-guide-ref">С. 86–95</p>
+        <p><strong>Возвратная форма.</strong> Перед глаголом стоят <span lang="fr">me, te, se, nous, vous, se</span>: <span lang="fr">je me lève, nous nous levons</span>. В отрицании <span lang="fr">ne</span> предшествует местоимению. В утвердительном impératif местоимение следует за глаголом: <span lang="fr">Lève-toi !</span></p>
+        <p><strong>Дополнения.</strong> Прямое дополнение заменяют <span lang="fr">le, la, les</span>. Для адресата у глаголов вроде <span lang="fr">écrire à</span> употребляются <span lang="fr">lui, leur</span>. Безударное местоимение ставится перед тем глаголом, к которому относится: <span lang="fr">Je le lis. Je veux le lire.</span></p>
+        <p><strong>Вопрос.</strong> Сравни разговорное <span lang="fr">Vous partez quand ?</span>, оборот с прямым порядком слов <span lang="fr">Quand est-ce que vous partez ?</span> и инверсию <span lang="fr">Quand partez-vous ?</span> Все три означают «Когда вы уезжаете?». В <span lang="fr">Où va-t-elle ?</span> между глаголом и местоимением вставляется <span lang="fr">-t-</span>.</p>
+        <p class="french-guide-example"><span lang="fr">— À qui écris-tu ?<br>— J’écris à Nora. Je lui écris chaque semaine.</span><br>— Кому ты пишешь?<br>— Я пишу Норе. Я пишу ей каждую неделю.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Замени выделенное дополнение местоимением и задай вопрос об адресате: <span lang="fr">Vous téléphonez <strong>à Paul</strong>.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Vous lui téléphonez. → À qui téléphonez-vous ?</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 2. Passé composé и относительные qui, que</summary>
+        <p class="french-guide-ref">С. 107–113</p>
+        <p class="french-pattern"><span lang="fr">Avoir / être</span> в présent + причастие прошедшего времени (<span lang="fr">participe passé</span>)</p>
+        <p><strong>Употребление.</strong> Passé composé представляет действие в прошлом как событие, которое произошло. Причастия частых глаголов: <span lang="fr">parler → parlé, finir → fini, lire → lu, faire → fait, prendre → pris</span>.</p>
+        <p><strong>Вспомогательный глагол.</strong> Большинство глаголов образуют эту форму с <span lang="fr">avoir</span>. У <span lang="fr">aller, venir, partir</span> и ряда других невозвратных глаголов используется <span lang="fr">être</span>. При этом причастие согласуется с подлежащим: <span lang="fr">Paul est parti. Léa est partie.</span></p>
+        <p><strong>Место местоимения.</strong> В сложном времени безударное дополнение стоит перед вспомогательным глаголом: <span lang="fr">J’ai écrit à Nora. → Je lui ai écrit.</span></p>
+        <p><strong>Qui и que.</strong> <span lang="fr">Qui</span> выполняет роль подлежащего, <span lang="fr">que</span> — прямого дополнения в придаточном предложении. Перед гласной <span lang="fr">que</span> сокращается до <span lang="fr">qu’</span>.</p>
+        <p class="french-guide-example"><span lang="fr">C’est le roman qui a reçu le prix. C’est le roman que j’ai lu.</span><br>Это роман, который получил премию. Это роман, который я прочитал(а).</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Расскажи, что произошло вчера: <span lang="fr">Elle part à sept heures et prend le train.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Hier, elle est partie à sept heures et a pris le train.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 3. Вопрос, отрицание и согласование в passé composé</summary>
+        <p class="french-guide-ref">С. 126–132</p>
+        <p><strong>Вопрос и отрицание.</strong> При инверсии местоимение-подлежащее следует за вспомогательным глаголом. <span lang="fr">Pas, jamais, plus, rien</span> обычно ставятся после вспомогательного глагола. <span lang="fr">Personne</span> в роли дополнения стоит после причастия.</p>
+        <p class="french-guide-example"><span lang="fr">As-tu lu le message ? Je n’ai rien lu. Je n’ai vu personne.</span><br>Ты прочитал(а) сообщение? Я ничего не читал(а). Я никого не видел(а).</p>
+        <p><strong>Согласование с avoir.</strong> Причастие согласуется с прямым дополнением, если оно стоит перед глаголом: <span lang="fr">les lettres que j’ai écrites</span>. В <span lang="fr">J’ai écrit les lettres</span> дополнение стоит после глагола, поэтому окончания <span lang="fr">-es</span> нет.</p>
+        <p><strong>Возвратные глаголы.</strong> Они используют <span lang="fr">être</span>. Согласование зависит от конструкции: <span lang="fr">Elle s’est lavée.</span> Но <span lang="fr">Elle s’est lavé les mains</span>, потому что прямое дополнение <span lang="fr">les mains</span> стоит после причастия.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Замени <span lang="fr">les photos</span> местоимением в предложении <span lang="fr">J’ai pris les photos.</span> Затем поставь отрицание.</p>
+          <details><summary>Ответ</summary><p lang="fr">Je les ai prises. → Je ne les ai pas prises.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 4. Futur simple и местоимение en</summary>
+        <p class="french-guide-ref">С. 145–149</p>
+        <p class="french-pattern">Основа будущего + <span lang="fr">-ai, -as, -a, -ons, -ez, -ont</span></p>
+        <p><strong>Образование.</strong> У многих глаголов основа совпадает с инфинитивом. У <span lang="fr">prendre</span> и подобных глаголов на <span lang="fr">-re</span> конечное <span lang="fr">e</span> опускается. Запомни основы <span lang="fr">ser-, aur-, ir-, fer-</span> у <span lang="fr">être, avoir, aller, faire</span>.</p>
+        <p class="french-guide-example"><span lang="fr">Demain, je prendrai le bus et tu iras à pied.</span><br>Завтра я поеду на автобусе, а ты пойдёшь пешком.</p>
+        <p><strong>En.</strong> Оно может заменить дополнение с частичным артиклем или с указанием количества. Количество остаётся в предложении: <span lang="fr">J’ai trois cahiers. → J’en ai trois.</span></p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Поставь ответ в futur simple и замени <span lang="fr">du thé</span> местоимением: <span lang="fr">Je prends du thé.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">J’en prendrai.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 5. Будущее в условной фразе, beau, vieux, nouveau</summary>
+        <p class="french-guide-ref">С. 158–160</p>
+        <p><strong>Условие.</strong> Если <span lang="fr">si</span> означает «если» и речь о возможном будущем, в части с <span lang="fr">si</span> ставится présent. В главной части может стоять futur simple.</p>
+        <p class="french-guide-example"><span lang="fr">Si le train arrive à l’heure, nous dînerons ensemble.</span><br>Если поезд придёт вовремя, мы поужинаем вместе.</p>
+        <p><strong>Особые формы.</strong> Перед существительным мужского рода с гласной или немым <span lang="fr">h</span> употребляются <span lang="fr">bel, vieil, nouvel</span>. В женском роде — <span lang="fr">belle, vieille, nouvelle</span>.</p>
+        <p class="french-guide-example"><span lang="fr">un vieux quartier → un vieil immeuble → une vieille maison</span><br>старый район → старое здание → старый дом</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p lang="fr">S’il (faire) beau, nous (aller) au musée.</p>
+          <details><summary>Ответ</summary><p lang="fr">S’il fait beau, nous irons au musée.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 6. Imparfait, выбор прошедшего времени и частичный артикль</summary>
+        <p class="french-guide-ref">С. 170–174</p>
+        <p class="french-pattern"><span lang="fr">Nous</span> в présent без <span lang="fr">-ons</span> + <span lang="fr">-ais, -ais, -ait, -ions, -iez, -aient</span></p>
+        <p><strong>Образование.</strong> <span lang="fr">Nous finissons → je finissais</span>. У <span lang="fr">être</span> особая основа <span lang="fr">ét-</span>: <span lang="fr">j’étais, nous étions</span>.</p>
+        <p><strong>Употребление.</strong> Imparfait описывает состояние, привычку или действие, уже происходившее в тот момент. Passé composé позволяет рассказать о событии целиком, даже если оно длилось долго. Сравни:</p>
+        <table class="french-guide-table">
+          <thead><tr><th scope="col">Imparfait</th><th scope="col">Passé composé</th></tr></thead>
+          <tbody>
+            <tr><td><span lang="fr">Elle travaillait à Lyon.</span><br>Она работала в Лионе.</td><td><span lang="fr">Elle a travaillé à Lyon pendant dix ans.</span><br>Она проработала в Лионе десять лет.</td></tr>
+            <tr><td><span lang="fr">Je préparais le dîner</span><br>Я готовил(а) ужин,</td><td><span lang="fr">quand Nora a téléphoné.</span><br>когда позвонила Нора.</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Частичный артикль.</strong> <span lang="fr">Du, de la, de l’</span> показывают неопределённое количество: <span lang="fr">Je bois du lait.</span> При обычном отрицании перед прямым дополнением — <span lang="fr">Je ne bois pas de lait.</span></p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p lang="fr">Quand je (sortir) du métro, il (pleuvoir).</p>
+          <details><summary>Ответ</summary><p><span lang="fr">Quand je suis sorti(e) du métro, il pleuvait.</span> Выход — событие, дождь — фон.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 7. Imparfait в косвенной речи и степени сравнения</summary>
+        <p class="french-guide-ref">С. 190–193</p>
+        <p><strong>Одновременность в прошлом.</strong> Когда речь передают из точки в прошлом, présent исходной фразы часто становится imparfait. Местоимения меняются по смыслу.</p>
+        <p class="french-guide-example"><span lang="fr">Nora dit : « Je travaille. » → Nora a dit qu’elle travaillait.</span><br>Нора говорит: «Я работаю». → Нора сказала, что она работает.</p>
+        <p><strong>Сравнительная степень.</strong> <span lang="fr">Plus / aussi / moins + прилагательное или наречие + que</span>. Особые формы: <span lang="fr">bon → meilleur</span>, <span lang="fr">bien → mieux</span>. В превосходной степени добавляется артикль: <span lang="fr">le texte le plus court</span>.</p>
+        <p class="french-guide-example"><span lang="fr">Ce train est plus rapide que le bus. Nora parle aussi vite que Luc.</span><br>Этот поезд быстрее автобуса. Нора говорит так же быстро, как Люк.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Сравни два рассказа с прилагательным <span lang="fr">bon</span>: <span lang="fr">Ce récit est … l’autre.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Ce récit est meilleur que l’autre.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçons 8–9. Plus-que-parfait и de перед прилагательным</summary>
+        <p class="french-guide-ref">С. 209–213, 223–224</p>
+        <p class="french-pattern"><span lang="fr">Avoir / être</span> в imparfait + <span lang="fr">participe passé</span></p>
+        <p><strong>Предшествование.</strong> Plus-que-parfait показывает, что действие произошло раньше другого момента в прошлом. Выбор вспомогательного глагола и правила согласования те же, что в passé composé.</p>
+        <p class="french-guide-example"><span lang="fr">Quand nous sommes entrés, le film avait déjà commencé.</span><br>Когда мы вошли, фильм уже начался.</p>
+        <p><strong>Артикль.</strong> Перед прилагательным, которое предшествует существительному во множественном числе, неопределённое <span lang="fr">des</span> в нейтральной письменной речи обычно заменяется на <span lang="fr">de</span>: <span lang="fr">des rues calmes → de petites rues</span>.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Покажи, что письмо было отправлено раньше звонка: <span lang="fr">Quand il a téléphoné, j’(envoyer) déjà la lettre.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Quand il a téléphoné, j’avais déjà envoyé la lettre.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 10. Passé simple и отрицательные rien, personne</summary>
+        <p class="french-guide-ref">С. 236–239</p>
+        <p><strong>Чтение.</strong> Passé simple характерен для письменного повествования. В разговоре те же события обычно передают passé composé. При чтении полезно узнавать типичные формы <span lang="fr">il parla, ils parlèrent, il finit, ils finirent</span> и особые <span lang="fr">il fut, il eut, il vint</span>.</p>
+        <p class="french-guide-example"><span lang="fr">La porte s’ouvrit et Luc entra. → La porte s’est ouverte et Luc est entré.</span><br>Дверь открылась, и Люк вошёл.</p>
+        <p><strong>Отрицательное подлежащее.</strong> <span lang="fr">Personne</span> означает «никто», а <span lang="fr">rien</span> — «ничто». При них сохраняется <span lang="fr">ne / n’</span>: <span lang="fr">Personne n’a répondu. Rien n’a changé.</span></p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Перескажи разговорным прошедшим: <span lang="fr">Elle ferma la fenêtre.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Elle a fermé la fenêtre.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 11. Futur dans le passé и отрицание при инфинитиве</summary>
+        <p class="french-guide-ref">С. 250–253</p>
+        <p><strong>Будущее из прошлого.</strong> Если событие было будущим по отношению к моменту, о котором рассказывают в прошедшем, употребляется форма conditionnel présent. Она строится из основы futur simple и окончаний imparfait.</p>
+        <p class="french-guide-example"><span lang="fr">Il a dit qu’il viendrait le lendemain.</span><br>Он сказал, что придёт на следующий день.</p>
+        <p><strong>Отрицание инфинитива.</strong> <span lang="fr">Ne pas</span> ставится целиком перед инфинитивом: <span lang="fr">Elle préfère ne pas sortir ce soir.</span> — Она предпочитает сегодня вечером не выходить.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Передай обещание со слов <span lang="fr">Léa a dit que…</span>: <span lang="fr">« Je vous appellerai. »</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Léa a dit qu’elle vous appellerait.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 12. Согласование времён, passé immédiat и gérondif</summary>
+        <p class="french-guide-ref">С. 264–268</p>
+        <p><strong>Косвенная речь.</strong> Определи, произошло ли действие до слов говорящего, одновременно с ними или после. В обычном пересказе после <span lang="fr">Il a dit que…</span> получаются такие соответствия:</p>
+        <table class="french-guide-table">
+          <thead><tr><th scope="col">Отношение во времени</th><th scope="col">Форма в пересказе</th></tr></thead>
+          <tbody>
+            <tr><td>Раньше</td><td lang="fr">il avait fini</td></tr>
+            <tr><td>Одновременно</td><td lang="fr">il travaillait</td></tr>
+            <tr><td>Позже</td><td lang="fr">il viendrait</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Passé immédiat.</strong> <span lang="fr">Venir de + infinitif</span> означает «только что»: <span lang="fr">Je viens de finir.</span> — Я только что закончил(а).</p>
+        <p><strong>Gérondif.</strong> Сочетание <span lang="fr">en</span> с формой на <span lang="fr">-ant</span> может указывать на одновременность или способ действия. Оба действия обычно относятся к одному подлежащему.</p>
+        <p class="french-guide-example"><span lang="fr">Elle apprend des mots en lisant des romans.</span><br>Она учит слова, читая романы.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Передай <span lang="fr">« J’ai envoyé le message. »</span>, начав с <span lang="fr">Il a dit que…</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Il a dit qu’il avait envoyé le message.</p></details>
+        </details>
+      </details>
+
+      <details>
+        <summary>Leçon 13. Страдательная форма</summary>
+        <p class="french-guide-ref">С. 279–281</p>
+        <p class="french-pattern"><span lang="fr">Être</span> в нужном времени + <span lang="fr">participe passé</span></p>
+        <p><strong>Построение.</strong> Прямое дополнение действительной фразы становится подлежащим. Причастие согласуется с новым подлежащим. Исполнителя можно ввести через <span lang="fr">par</span> или опустить, если он неизвестен или неважен.</p>
+        <p class="french-guide-example"><span lang="fr">L’équipe a préparé les affiches. → Les affiches ont été préparées par l’équipe.</span><br>Команда подготовила плакаты. → Плакаты были подготовлены командой.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Поставь в страдательную форму: <span lang="fr">On ouvrira les portes à neuf heures.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Les portes seront ouvertes à neuf heures.</p></details>
+        </details>
+      </details>
+    </section>
+
+    <section class="french-guide-group" id="french-guide-extra" aria-labelledby="french-guide-extra-title">
+      <h3 id="french-guide-extra-title">Дополнения к курсу</h3>
+      <details>
+        <summary>Связки между предложениями, y и où</summary>
+        <p><strong>Связки.</strong> <span lang="fr">Parce que</span> вводит причину, <span lang="fr">donc</span> — следствие, <span lang="fr">mais</span> — противопоставление.</p>
+        <p class="french-guide-example"><span lang="fr">Il pleut, donc on prend le métro.</span><br>Идёт дождь, поэтому мы едем на метро.</p>
+        <p><strong>Место.</strong> <span lang="fr">Y</span> может заменить обстоятельство места. Относительное <span lang="fr">où</span> связывает существительное с придаточным, обозначающим место или время.</p>
+        <p class="french-guide-example"><span lang="fr">On va à la gare. → On y va.<br>C’est la ville où j’habite.</span><br>Мы идём на вокзал. → Мы туда идём.<br>Это город, в котором я живу.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p>Замени указание места: <span lang="fr">Nous retournons au marché.</span></p>
+          <details><summary>Ответ</summary><p lang="fr">Nous y retournons.</p></details>
+        </details>
+      </details>
+      <details>
+        <summary>Conditionnel и subjonctif в разговоре</summary>
+        <p><strong>Conditionnel.</strong> Форма <span lang="fr">je voudrais</span> помогает вежливо попросить о чём-то. Для воображаемого условия употребляется <span lang="fr">si</span> с imparfait, а следствие выражается conditionnel présent.</p>
+        <p class="french-guide-example"><span lang="fr">Je voudrais un café. Si j’avais le temps, je lirais ce livre.</span><br>Я хотел(а) бы кофе. Если бы у меня было время, я бы прочитал(а) эту книгу.</p>
+        <p><strong>Subjonctif.</strong> После выражений необходимости и желания, например <span lang="fr">il faut que</span> и <span lang="fr">je veux que</span>, в придаточной части употребляется subjonctif.</p>
+        <p class="french-guide-example"><span lang="fr">Il faut que tu viennes demain.</span><br>Нужно, чтобы ты пришёл / пришла завтра.</p>
+        <details class="french-guide-exercise">
+          <summary>По образцу</summary>
+          <p lang="fr">Si nous (avoir) le temps, nous (visiter) le musée.</p>
+          <details><summary>Ответ</summary><p lang="fr">Si nous avions le temps, nous visiterions le musée.</p></details>
+        </details>
+      </details>
+    </section>
+
+    <p class="french-guide-source">Л. Л. Потушанская, Н. И. Колесникова, Г. М. Котова. <cite>Начальный курс французского языка</cite>. 5-е изд. М.: Мирта-Принт, 1999. Грамматический указатель на с. 306–307.</p>
+  </section>
+</section>
 </main>
 <dialog id="editor"><form id="editor-form"><div class="dialog-head"><h2 id="editor-title">Новая запись</h2><button type="button" class="icon-button" id="close-editor">×</button></div><div id="editor-fields"></div><p class="form-error" id="form-error"></p><div class="dialog-actions"><button type="button" class="danger" id="delete-entry" hidden>Удалить</button><span></span><button type="button" id="cancel-editor">Отмена</button><button class="primary" type="submit">Сохранить</button></div></form></dialog><div class="toast" id="toast" hidden></div>
+<dialog id="french-editor" aria-labelledby="french-editor-title">
+  <form id="french-form">
+    <div class="dialog-head">
+      <h2 id="french-editor-title">Новая карточка</h2>
+      <button type="button" class="icon-button" id="french-close" aria-label="Закрыть">×</button>
+    </div>
+    <div class="french-fields">
+      <label>Тип карточки
+        <select name="kind">
+          <option value="word">Слово или выражение</option>
+          <option value="conjugation">Спряжение</option>
+          <option value="number">Число</option>
+        </select>
+      </label>
+      <label>Вопрос<input name="front" lang="fr" maxlength="200" required></label>
+      <label>Ответ<textarea name="back" maxlength="4000" rows="3" required></textarea></label>
+      <label id="french-translation-field" hidden>Перевод
+        <input name="translation" maxlength="400">
+      </label>
+      <label id="french-verb-model">Создать спряжения
+        <select name="verb_model">
+          <option value="">Автоматически для известных глаголов</option>
+          <option value="er">По модели parler (-er)</option>
+          <option value="ir">По модели finir (-ir)</option>
+          <option value="none">Не создавать</option>
+        </select>
+      </label>
+      <p id="french-conjugation-hint" class="french-optional" hidden>Укажи инфинитив в поле «Вопрос». Для автоматического спряжения оставь ответ пустым. При ручном вводе пиши каждую форму с новой строки.</p>
+      <label>Пример <span class="french-optional">(необязательно)</span>
+        <textarea name="example" lang="fr" maxlength="400"></textarea>
+      </label>
+    </div>
+    <p class="form-error" id="french-form-error" role="alert" hidden></p>
+    <div class="dialog-actions">
+      <button type="button" class="danger" id="french-delete" hidden>Удалить</button>
+      <span></span>
+      <button type="button" id="french-cancel">Отмена</button>
+      <button type="submit" class="primary">Сохранить</button>
+    </div>
+  </form>
+</dialog>
 </body></html>

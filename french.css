@@ -1,0 +1,273 @@
+.french-filters {
+  margin: 18px 0;
+}
+
+.french-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: clamp(18px, 4vw, 36px);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#french-start-screen p {
+  margin: 0 0 18px;
+}
+
+.french-card-kind,
+#french-example,
+#french-translation,
+#french-finish,
+.french-optional,
+#french-load-status {
+  color: var(--muted);
+}
+
+.french-card-kind {
+  font-size: .85rem;
+  margin: 0 0 10px;
+}
+
+#french-front {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin: 0 0 20px;
+}
+
+#french-solution {
+  border-top: 1px solid var(--line);
+  margin: 0 auto 22px;
+  max-width: 640px;
+  white-space: pre-line;
+}
+
+#french-back {
+  font-size: 1.3rem;
+  margin: 18px 0 8px;
+}
+
+.french-forms {
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+#french-back.french-forms {
+  font-size: 1.05rem;
+}
+
+#french-conjugation-hint {
+  margin: 0;
+  font-size: .83rem;
+}
+
+#french-example {
+  margin: 8px 0 0;
+  font-style: italic;
+}
+
+.french-ratings {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.french-ratings button,
+#french-retry {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 9px 7px;
+}
+
+.french-ratings button:hover {
+  border-color: var(--accent);
+}
+
+.french-ratings small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+#french-finish {
+  display: block;
+  margin: 14px auto 0;
+}
+
+#french-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+#french-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+#french-list li p {
+  margin: 6px 0 0;
+}
+
+#french-list li small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.french-fields {
+  display: grid;
+  gap: 15px;
+  margin: 22px 0;
+}
+
+#french-guide {
+  max-width: 830px;
+  padding-top: 22px;
+}
+
+#french-guide h2 {
+  margin: 0 0 16px;
+}
+
+.french-guide-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.french-guide-nav a {
+  color: #964020;
+  text-underline-offset: .2em;
+}
+
+.french-guide-group {
+  margin-top: 28px;
+  scroll-margin-top: 126px;
+}
+
+.french-guide-group h3 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+}
+
+.french-guide-group details {
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  line-height: 1.55;
+}
+
+.french-guide-group summary {
+  padding: 12px 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.french-guide-group summary:focus-visible,
+#french-guide a:focus-visible {
+  outline: 3px solid #e35b3266;
+  outline-offset: 2px;
+}
+
+.french-guide-group details > p {
+  margin: 0 15px 12px;
+}
+
+.french-guide-ref,
+.french-guide-source {
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.french-guide-table {
+  width: calc(100% - 30px);
+  min-width: 0;
+  margin: 0 15px 12px;
+  overflow-wrap: anywhere;
+}
+
+.french-guide-table th,
+.french-guide-table td {
+  min-width: 0;
+  width: auto;
+  padding: 7px 9px;
+  white-space: normal;
+}
+
+.french-guide-table th:first-child,
+.french-guide-table td:first-child {
+  min-width: 0;
+  width: auto;
+  padding-left: 9px;
+}
+
+.french-guide-table thead {
+  background: var(--paper);
+}
+
+.french-guide-table th[scope="row"] {
+  border-top: 1px solid var(--line);
+}
+
+.french-pattern {
+  padding: 7px 10px;
+  border-radius: 5px;
+  background: var(--paper);
+  font-weight: 600;
+}
+
+.french-guide-example {
+  padding-left: 10px;
+  border-left: 2px solid #e5a892;
+}
+
+.french-guide-example span[lang="fr"]:first-child {
+  font-weight: 600;
+}
+
+.french-guide-group details.french-guide-exercise {
+  margin: 0 15px 15px;
+  background: var(--paper);
+}
+
+.french-guide-exercise details {
+  margin: 0 12px 12px;
+}
+
+.french-guide-exercise summary {
+  padding: 8px 12px;
+}
+
+.french-guide-source {
+  margin-top: 24px;
+}
+
+.read-only .french-local-edit {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .french-ratings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .app-nav {
+    flex-wrap: wrap;
+  }
+  .app-nav button {
+    padding-inline: 10px;
+  }
+}
