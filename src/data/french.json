@@ -539,6 +539,13 @@
     "example": "Je suis en train de travailler."
   },
   {
+    "id": "fr-word-051",
+    "kind": "word",
+    "front": "le bébé",
+    "back": "малыш, младенец",
+    "example": "Le bébé dort."
+  },
+  {
     "id": "fr-etre-present-je",
     "kind": "conjugation",
     "front": "être",
@@ -812,6 +819,38 @@
       "e91f4a9f-2c7e-4941-bc6e-5ddf6f780e07",
       "daee0e25-52b1-4eab-ab26-afd7bf96a424"
     ]
+  },
+  {
+    "id": "fr-conjugation-penser",
+    "kind": "conjugation",
+    "front": "penser",
+    "translation": "думать, полагать",
+    "example": "Je pense à toi.",
+    "back": "Présent\nje pense\ntu penses\nil/elle pense\nnous pensons\nvous pensez\nils/elles pensent\n\nImparfait\nje pensais\ntu pensais\nil/elle pensait\nnous pensions\nvous pensiez\nils/elles pensaient\n\nPassé composé\nj’ai pensé\ntu as pensé\nil/elle a pensé\nnous avons pensé\nvous avez pensé\nils/elles ont pensé"
+  },
+  {
+    "id": "fr-conjugation-croire",
+    "kind": "conjugation",
+    "front": "croire",
+    "translation": "верить, полагать",
+    "example": "Je crois que tu as raison.",
+    "back": "Présent\nje crois\ntu crois\nil/elle croit\nnous croyons\nvous croyez\nils/elles croient\n\nImparfait\nje croyais\ntu croyais\nil/elle croyait\nnous croyions\nvous croyiez\nils/elles croyaient\n\nPassé composé\nj’ai cru\ntu as cru\nil/elle a cru\nnous avons cru\nvous avez cru\nils/elles ont cru"
+  },
+  {
+    "id": "fr-conjugation-réfléchir",
+    "kind": "conjugation",
+    "front": "réfléchir",
+    "translation": "размышлять, обдумывать",
+    "example": "Je réfléchis à ta proposition.",
+    "back": "Présent\nje réfléchis\ntu réfléchis\nil/elle réfléchit\nnous réfléchissons\nvous réfléchissez\nils/elles réfléchissent\n\nImparfait\nje réfléchissais\ntu réfléchissais\nil/elle réfléchissait\nnous réfléchissions\nvous réfléchissiez\nils/elles réfléchissaient\n\nPassé composé\nj’ai réfléchi\ntu as réfléchi\nil/elle a réfléchi\nnous avons réfléchi\nvous avez réfléchi\nils/elles ont réfléchi"
+  },
+  {
+    "id": "fr-conjugation-laver",
+    "kind": "conjugation",
+    "front": "laver",
+    "translation": "мыть, стирать",
+    "example": "Je lave la voiture.",
+    "back": "Présent\nje lave\ntu laves\nil/elle lave\nnous lavons\nvous lavez\nils/elles lavent\n\nImparfait\nje lavais\ntu lavais\nil/elle lavait\nnous lavions\nvous laviez\nils/elles lavaient\n\nPassé composé\nj’ai lavé\ntu as lavé\nil/elle a lavé\nnous avons lavé\nvous avez lavé\nils/elles ont lavé"
   },
   {
     "id": "fr-number-000",

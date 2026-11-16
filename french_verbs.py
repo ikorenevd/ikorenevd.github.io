@@ -22,7 +22,7 @@ REGULAR_ER = frozenset("""
     retrouver réveiller saluer sauter sembler téléphoner tomber toucher travailler tromper
     traverser trouver utiliser visiter voyager acheter amuser appeler jeter peser
 """.split())
-REGULAR_IR = frozenset("agir bâtir choisir finir grandir grossir maigrir obéir remplir réussir".split())
+REGULAR_IR = frozenset("agir bâtir choisir finir grandir grossir maigrir obéir réfléchir remplir réussir".split())
 IRREGULAR = {
     "aller": ("vais vas va allons allez vont", "allé", "être"),
     "apercevoir": ("aperçois aperçois aperçoit apercevons apercevez aperçoivent", "aperçu"),
