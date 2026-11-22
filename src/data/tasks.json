@@ -250,5 +250,32 @@
     "completed_at": null,
     "id": "c9049f3a-b629-46da-adfc-566344573bfc",
     "created_at": "2026-11-18T02:10:22+03:00"
+  },
+  {
+    "title": "Параллелька. Исправить поиск собственных чисел.",
+    "due_at": "2026-11-27T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "e8eebcf3-27a4-4d1c-a5a7-c580d2d9dd67",
+    "created_at": "2026-11-21T16:50:40+03:00"
+  },
+  {
+    "title": "Практикум.",
+    "due_at": "2026-11-27T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "6457bd3d-d643-4028-a079-086335b422c8",
+    "created_at": "2026-11-21T16:51:17+03:00"
+  },
+  {
+    "title": "ДопГлавы.",
+    "due_at": "2026-11-27T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "a6c98149-576c-4aae-807f-7d65484da733",
+    "created_at": "2026-11-22T21:22:58+03:00"
   }
 ]
