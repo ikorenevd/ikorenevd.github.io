@@ -255,8 +255,8 @@
     "title": "Параллелька. Исправить поиск собственных чисел.",
     "due_at": "2026-11-27T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-11-24T18:11:00+03:00",
     "id": "e8eebcf3-27a4-4d1c-a5a7-c580d2d9dd67",
     "created_at": "2026-11-21T16:50:40+03:00"
   },
@@ -264,8 +264,8 @@
     "title": "Практикум.",
     "due_at": "2026-11-27T06:00:00.000Z",
     "notes": "",
-    "status": "todo",
-    "completed_at": null,
+    "status": "done",
+    "completed_at": "2026-11-24T18:10:59+03:00",
     "id": "6457bd3d-d643-4028-a079-086335b422c8",
     "created_at": "2026-11-21T16:51:17+03:00"
   },
@@ -277,5 +277,14 @@
     "completed_at": null,
     "id": "a6c98149-576c-4aae-807f-7d65484da733",
     "created_at": "2026-11-22T21:22:58+03:00"
+  },
+  {
+    "title": "МатСтат",
+    "due_at": "2026-11-30T06:00:00.000Z",
+    "notes": "",
+    "status": "todo",
+    "completed_at": null,
+    "id": "49e59724-6058-4572-be4b-2046d8b8c5b5",
+    "created_at": "2026-11-24T18:11:12+03:00"
   }
 ]
