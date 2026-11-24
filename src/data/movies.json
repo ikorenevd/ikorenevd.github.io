@@ -166,8 +166,17 @@
     "title_ru": "",
     "title_original": "Streets of fire",
     "year": 1984,
-    "status": "waiting",
+    "status": "watched",
     "added_at": "2026-11-05T01:05:00.614Z",
-    "completed_at": null
+    "completed_at": "2026-11-24T22:37:31+03:00"
+  },
+  {
+    "type": "movie",
+    "title_ru": "",
+    "title_original": "Dr. No",
+    "year": 1962,
+    "status": "watched",
+    "added_at": "2026-11-24T21:46:48.809Z",
+    "completed_at": "2026-11-24T21:46:48.809Z"
   }
 ]
